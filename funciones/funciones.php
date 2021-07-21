@@ -440,6 +440,7 @@ function imagenes_productos($id){
     mysqli_close($mysqli);
     return $datos;
 }
+
 function detalle_producto($id){
     include("include/conx.php");
     $datos = array();
@@ -463,6 +464,19 @@ function detalle_producto($id){
     mysqli_close($mysqli);
     return $datos;
 }
+
+function detalle_pack(){
+  include("includes/conx.php");
+  $datos = array();
+
+  
+
+
+
+
+  return $datos;
+}
+
 function top_productos($cantidad){
     include("include/conx.php");
     $datos = array();

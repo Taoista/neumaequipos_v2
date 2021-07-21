@@ -88,9 +88,7 @@ if($mostrar_pack["dato"] == "no"){
                                 <?php } ?>
                             </div>
                             <div class="product_variant quantity">
-                                <label>Cantidad</label>
-                                <input id="cantidad-producto" min="1" max="100" value="1" type="number">
-                                <button onclick="return cotizar_producto('packs','<?php echo $idPack; ?>')" class="button" type="submit">Cotizar</button>  
+                                <button onclick="return buy_pack('packs','<?php echo $idPack; ?>')" class="button" type="submit">Comprar</button>  
                             </div> 
                             <!-- <div class=" product_d_action">
                                <ul> -->

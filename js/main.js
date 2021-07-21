@@ -450,3 +450,7 @@ function enviar_contacto(){
   }
   return false;
 }
+
+function buy_pack(tipo, id_pack){
+  alert(id_pack);
+}
