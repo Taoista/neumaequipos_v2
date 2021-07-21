@@ -3,7 +3,7 @@
     include_once("funciones/funciones.php");
     $state_popup    = state_popup();
     $destacados     = productos_destacados();
-    include("include/head.inc.php");
+    include_once("include/head.inc.php");
     $mostrar_pack = mostrar_pack();
 ?>
 

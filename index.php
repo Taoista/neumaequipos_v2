@@ -77,7 +77,7 @@
     <!-- PACKS -->
 
     <?php if($mostrar_pack["dato"] == "si"){
-     include_once("include/explusivo.inc.php");
+     //include_once("include/explusivo.inc.php"); 
      } ?>
 
     <!--  -->

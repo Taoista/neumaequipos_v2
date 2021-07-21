@@ -4,7 +4,7 @@ include_once("funciones/funciones.php");
 include_once("include/head.inc.php");
 // $state_popup            = state_popup(); 
 $destacados             = productos_destacados(); 
-$idPack                 = ($_GET["idPack"]);
+$idPack                 = $_GET["idPack"];
 $datos_pack             = datos_pack($idPack);
 $productos              = productos_packs($idPack);
 $crumbs = explode("/",$_SERVER["REQUEST_URI"]);
@@ -91,7 +91,7 @@ if($mostrar_pack["dato"] == "no"){
                                 <label>Cantidad</label>
                                 <input id="cantidad-producto" min="1" max="100" value="1" type="number">
                                 <button onclick="return cotizar_producto('packs','<?php echo $idPack; ?>')" class="button" type="submit">Cotizar</button>  
-                            </div>
+                            </div> 
                             <!-- <div class=" product_d_action">
                                <ul> -->
                                    <!-- <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li> -->
@@ -308,7 +308,7 @@ if($mostrar_pack["dato"] == "no"){
     </div>
     <!--product info end-->
     <!--product area start-->
-    <?php include_once("include/top_productos.php"); ?>
+    <?php include_once("include/top_productos.php"); ?> 
     <!--product area end-->
     <!--call to action start-->
     <section class="call_to_action">
