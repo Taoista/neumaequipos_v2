@@ -1,3 +1,7 @@
+ <!-- Google Tag Manager (noscript) -->
+ <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF3MXGC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->    
 <div class="icon-bar">
   <a href="https://www.facebook.com/todoenequipamientoautomotriz" target="_blank" class="facebook" ><i class="fa fa-facebook"></i></a> 
   <a href="https://wa.me/+56959120748" target="_blank" class="wassap"><i class="fa fa-whatsapp"></i></a> 
