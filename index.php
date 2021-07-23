@@ -19,14 +19,14 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="slider_area owl-carousel">
-                        <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider1.jpg">
+                        <div id="element_1" class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider1.jpg">
                             <!-- <div class="slider_content">
                                 <h2>Calidad Superior</h2>
                                 <h1>Compresor de Pistón</h1>
                                 <a class="button" href="shop.html">Ver compresores</a>
                             </div> -->
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url ?>assets/img/slider/slider2.jpg">
+                        <div id="element_2" class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url ?>assets/img/slider/slider2.jpg">
                             <!-- <div class="slider_content">
                                 <h2>Equipamiento Automotriz</h2>
                                 <h1>Tenemos todo para su taller</h1>
@@ -181,7 +181,21 @@
     <?php //include_once("include/popup.inc.php"); ?>
 
     <?php include_once("include/script.inc.php"); ?>
+    <script>
+        // 1110x520
+        // 940x470
+        // 720x420
+        // 420x350
 
+        function e_1_max_1110() {
+            var x = window.matchMedia("(max-width: 1110)")
+            if (x.matches) { // If media query matches
+                $('#element_1').attr('data-bgimg','assets/img/slider/element_1_1110.webp');
+                console.log('img 1110')  
+            } 
+        }
+        max_700();
+    </script>
 </body>
 </html>
 
