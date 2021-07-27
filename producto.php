@@ -73,7 +73,7 @@ $condiciones        = get_condiciones($idProducto);
                                 <button class="button" type="submit">Cotizar</button>
                             </div> -->
                             <div class="product_variant quantity">
-                                <label>Cantidad</label>
+                                <label>Cantidad</label> 
                                 <input id="cantidad-producto" min="1" max="100" value="1" type="number">
                                 <?php // NOTA : se cambio ya que solo se pedira de una en el caso de los productos FUNCION ORIIGNAL js  ?>
                                 <button id="btn-cotizacion" onclick="llamar_cotizacion('<?php echo $idProducto; ?>')"  class="button" >Cotizar</button>

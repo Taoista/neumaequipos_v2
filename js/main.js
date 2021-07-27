@@ -1,5 +1,5 @@
-const _URL = 'http://localhost/neumaequipos_v2/';
-// const _URL = 'https://neumaequipos.cl/';
+// const _URL = 'http://localhost/neumaequipos_v2/';
+const _URL = 'https://neumaequipos.cl/';
 function llamar_cotizacion(id){
   let cantidad = document.getElementById("cantidad-producto").value;
   window.location.href= _URL+'cotizacion/'+btoa(id)+'/'+btoa(cantidad); 
