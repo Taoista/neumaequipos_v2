@@ -437,7 +437,7 @@ h3.lbl-ceo{
   .icon-bar{
     top: 97%;
     width:100%;
-    background-color:#28937f;
+    background-color:#28937f; 
   }
   .icon-bar a {
     display: inline-block;

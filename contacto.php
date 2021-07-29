@@ -46,9 +46,9 @@
                          <p>Te responderemos lo mas pronto posible tus consultas ó inquietudes. <br>
                         Contamos con el personal calificado para atenderte</p>
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i>  Dirección : Santa Margarita 0448, San Bernardo</li>
-                            <li><i class="fa fa-envelope-o"></i> <a href="#">Info@neumarquipos.cl</a></li>
-                            <li><i class="fa fa-phone"></i><a href="tel:0(1234)567890">+56 9 50114105 </a> </li>
+                            <li style="font-size:17px"><i class="fas fa-map-marker-alt"></i> Dirección : Santa Margarita 0448, San Bernardo</li>
+                            <li style="font-size:17px"><i class="fa fa-envelope-o"></i>  <a href="#">Info@neumarquipos.cl</a></li>
+                            <li style="font-size:17px"><i class="fa fa-phone"></i><a href="tel:+56959120748">+56 9 5912 0748</a> </li>
                         </ul>             
                     </div> 
                 </div>
