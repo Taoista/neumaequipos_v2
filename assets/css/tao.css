@@ -449,3 +449,25 @@ h3.lbl-ceo{
     background-color: #28937f;
   }
 }
+
+/* solution error software */
+@media screen and (max-width: 700px) {
+  /* .slide-item1{
+    background-image: url('assets/img/slider/slider_420.jpg');
+  } */
+  #slider-1{
+    background-image: url('assets/img/slider/slider_420.jpg') !important;
+  }
+ }
+  /* @media screen and (min-width: 40em) {
+    .slide-item{ 
+      height: 360px; 
+      min-height: 360px;
+    }
+  }
+  @media screen and (min-width: 64em) {
+    .slide-item{ 
+      height: 600px; 
+      min-height: 600px;
+    }
+  } */
