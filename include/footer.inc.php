@@ -27,15 +27,15 @@ $tel_post_ventas            = datos_contacto(3);
                             <h3>Productos</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="product.html">Balanceadora</a></li>
-                                    <li><a href="#">Alineadora</a></li>
-                                    <li><a href="privacy-policy.html">Elevadores</a></li>
-                                    <li><a href="coming-soon.html">Desmontadoras</a></li>
-                                    <li><a href="#">Torno</a></li>
-                                    <li><a href="#">Red de lubricación</a></li>
-                                    <li><a href="#">Compresores</a></li>
-                                    <li><a href="#">Mantención</a></li>
-                                    <li><a href="videos.html">Videos</a></li>
+                                    <li><a href="<?php echo _Url; ?>categoria/5/Balanceadora">Balanceadora</a></li>
+                                    <li><a href="<?php echo _Url; ?>categoria/1/Alineadora">Alineadora</a></li>
+                                    <li><a href="<?php echo _Url; ?>categoria/2/Elevador">Elevadores</a></li>
+                                    <li><a href="<?php echo _Url; ?>categoria/6/Desmontadora">Desmontadoras</a></li>
+                                    <li><a href="<?php echo _Url; ?>categoria/7/Torno">Torno</a></li>
+                                    <li><a href="<?php echo _Url; ?>categoria/8/Red%20De%20Lubricacion">Red de lubricación</a></li>
+                                    <li><a href="<?php echo _Url; ?>categoria/4/Compresores/">Compresores</a></li>
+                                    <li><a href="<?php echo _Url; ?>postventa/">Mantención</a></li>
+                                    <li><a href="<?php echo _Url; ?>videos/">Videos</a></li>
                                 </ul>
                             </div>
                         </div>
