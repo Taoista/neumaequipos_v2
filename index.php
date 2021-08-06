@@ -19,14 +19,14 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="slider_area owl-carousel">
-                        <div id="slider-1" class="single_slider d-flex align-items-center slide-item1" data-bgimg="<?php echo _Url ?>assets/img/slider/slider1.jpg">
+                        <div id="element_1" class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider1.jpg">
                             <!-- <div class="slider_content">
                                 <h2>Calidad Superior</h2>
                                 <h1>Compresor de Pistón</h1>
                                 <a class="button" href="shop.html">Ver compresores</a>
                             </div> -->
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url ?>assets/img/slider/slider2.jpg">
+                        <div id="element_2" class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url ?>assets/img/slider/slider2.jpg">
                             <!-- <div class="slider_content">
                                 <h2>Equipamiento Automotriz</h2>
                                 <h1>Tenemos todo para su taller</h1>
@@ -182,39 +182,19 @@
 
     <?php include_once("include/script.inc.php"); ?>
     <script>
-        // function myFunction() {
-        //     var x700 = window.matchMedia("(max-width: 700px)");
-        //     var x991 = window.matchMedia("(max-width: 991px)");
-        //     var x479 = window.matchMedia("(max-width: 479px)");
-        //     if (x700.matches) { // If media query matches
-        //         $('#slider-1').data("data-bgimg","http://neumaequipos.cl/assets/img/slider/slider_420.jpg");
-        //         document.getElementById("slider-1").style.backgroundImage = "url('http://neumaequipos.cl/assets/img/slider/slider_420.jpg')";
-        //         console.log("este es es una del 720 ");
-        //     } 
-        //     if (x991.matches) { // If media query matches
-        //         console.log('llamando el estado');  
-        //     } 
-        //     if (x479.matches) { // If media query matches
-        //         console.log('llamando el estado');  
-        //     } 
-        // }
-        // myFunction();
-        // $('.owl-carousel').owlCarousel({
-        //     loop:true,
-        //     margin:10,
-        //     nav:true,
-        //     responsive:{
-        //         0:{ //for width 0px and up
-        //             items:1 //show only one item at a time
-        //         },
-        //         600:{ //for width 600px and up
-        //             items:3 //show 3 items at a time
-        //         },
-        //         1000:{ //for width 1000px and up
-        //             items:5 //show 5 items at a time
-        //         }
-        //     }
-        // });
+        // 1110x520
+        // 940x470
+        // 720x420
+        // 420x350
+
+        function e_1_max_1110() {
+            var x = window.matchMedia("(max-width: 1110)")
+            if (x.matches) { // If media query matches
+                $('#element_1').attr('data-bgimg','assets/img/slider/element_1_1110.webp');
+                console.log('img 1110')  
+            } 
+        }
+        max_700();
     </script>
 </body>
 </html>
