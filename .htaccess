@@ -6,7 +6,8 @@ RewriteRule ^(.*)$ https://neumaequipos.cl/$1 [R,L]
 Options +FollowSymLinks
 RewriteEngine On
 
-RewriteRule ^/ index.php
+RewriteRule ^/                                      index.php
+RewriteRule ^demo/                                  index2.php
 RewriteRule ^pack/([0-9]+)$                         detalle-pack.php?idPack=$1
 RewriteRule ^producto/([0-9]+)/([a-zA-Z]+)          producto.php?idProducto=$1&nombre=$2
 RewriteRule ^categoria/([0-9]+)/([a-zA-Z]+)         categoria.php?idNac=$1&titulo=$1

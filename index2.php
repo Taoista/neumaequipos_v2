@@ -1,5 +1,6 @@
 <?php
     session_start();
+    echo '=================== inicinado 2'."<br>";
     include_once("funciones/funciones.php");
     $state_popup    = state_popup();
     $destacados     = productos_destacados();
@@ -17,19 +18,22 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="slider_area owl-carousel">
-                        <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider1.jpg">
-                            <!-- <div class="slider_content">
+                        <!-- <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url; ?>assets/img/slider/slider1.jpg">
+                            <div class="slider_content">
                                 <h2>Calidad Superior</h2>
                                 <h1>Compresor de Pistón</h1>
                                 <a class="button" href="shop.html">Ver compresores</a>
-                            </div> -->
-                        </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url ?>assets/img/slider/slider2.jpg">
-                            <!-- <div class="slider_content">
+                                <img src="<?php echo _Url;?>demo.jpg" alt="">
+                            </div>
+                        </div> -->
+                        <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url; ?>assets/img/slider/slider2.jpg">
+                            <div class="slider_content">
                                 <h2>Equipamiento Automotriz</h2>
-                                <h1>Tenemos todo para su taller</h1>
+                                <h1 style="text-align: right">Tenemos todo para su taller</h1>
                                 <a class="button" href="shop.html">Ver mas</a>
-                            </div> -->
+                                <h2><img src="<?php echo _Url;?>demo.jpg" alt=""></h2>
+                                
+                            </div>
                         </div>
                         <!-- <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider3.jpg"> -->
                             <!-- <div class="slider_content">
