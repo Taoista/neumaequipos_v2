@@ -31,7 +31,7 @@
                                 <h2>Equipamiento Automotriz</h2>
                                 <h1 style="text-align: right">Tenemos todo para su taller</h1>
                                 <a class="button" href="shop.html">Ver mas</a>
-                                <h2><img src="<?php echo _Url;?>demo.jpg" alt=""></h2>
+                                <h2 class="owl-item"><img src="<?php echo _Url;?>demo.jpg" alt=""></h2>
                                 
                             </div>
                         </div>
