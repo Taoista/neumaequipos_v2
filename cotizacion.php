@@ -47,7 +47,7 @@ $detalle_producto       =   detalle_producto($idProducto);
                                     </div>
                                     <!-- <div class="readmore_button">
                                         <a href="blog-details.html">read more</a>
-                                    </div> -->
+                                    </div> --> 
                                 </div>
                             </div>
                         </div>

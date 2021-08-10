@@ -115,7 +115,7 @@
                                 <img src="assets/img/icon/10.png" alt="">
                             </div>
                             <div class="shipping_content">
-                                <h2>6 CUOTAS SIN INTERES</h2>
+                                <h2>10 CUOTAS SIN INTERES</h2>
                                 <p>Recibe link de Webpay, llena datos y relaiza el pago </p>
                             </div>
                         </div>
