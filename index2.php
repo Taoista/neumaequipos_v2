@@ -25,7 +25,9 @@
                                 <a class="button" href="shop.html">Ver compresores</a>
                                 <img src="<?php echo _Url;?>demo.jpg" alt="">
                             </div>
-                        </div> -->
+                        </div> 
+                    slider_content => width:
+                    -->
                         <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url; ?>assets/img/slider/slider2.jpg">
                             <div class="slider_content">
                                 <h2>Equipamiento Automotriz</h2>
