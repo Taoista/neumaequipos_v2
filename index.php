@@ -8,8 +8,6 @@
 ?>
 
 <body>
-   
-    
     <?php include_once("include/social_media.php"); ?>
     <?php include_once("include/header.inc.php"); ?>
     <!--Offcanvas menu area end-->
@@ -18,28 +16,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <div class="slider_area owl-carousel">
-                        <div id="element_1" class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider1.jpg">
-                            <!-- <div class="slider_content">
-                                <h2>Calidad Superior</h2>
-                                <h1>Compresor de Pistón</h1>
-                                <a class="button" href="shop.html">Ver compresores</a>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <!-- <img  class="d-block w-100" src="assets/img/slider/slider1.jpg" alt="First slide"> -->
+                                <img id="slaider" class="d-block w-100" src="assets/img/slider/slider.webp" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img id="slaider1" class="d-block w-100" src="assets/img/slider/slider1.webp" alt="Second slide">
+                            </div>
+                            <!-- <div class="carousel-item">
+                                <img class="d-block w-100" src="assets/img/slider/slider1.jpg" alt="Third slide">
                             </div> -->
                         </div>
-                        <div id="element_2" class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url ?>assets/img/slider/slider2.jpg">
-                            <!-- <div class="slider_content">
-                                <h2>Equipamiento Automotriz</h2>
-                                <h1>Tenemos todo para su taller</h1>
-                                <a class="button" href="shop.html">Ver mas</a>
-                            </div> -->
-                        </div>
-                        <!-- <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider3.jpg"> -->
-                            <!-- <div class="slider_content">
-                                <h2>Pagar ahora es mas</h2>
-                                <h1>Fácil, Rapido y Seguro</h1>
-                                <a class="button" href="shop.html">shopping now</a>
-                            </div> -->
-                        <!-- </div> -->
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -79,7 +81,7 @@
     <!-- PACKS -->
 
     <?php if($mostrar_pack["dato"] == "si"){
-     //include_once("include/explusivo.inc.php"); 
+     include_once("include/explusivo.inc.php");
      } ?>
 
     <!--  -->
@@ -181,21 +183,30 @@
     <?php //include_once("include/popup.inc.php"); ?>
 
     <?php include_once("include/script.inc.php"); ?>
-    <script>
-        // 1110x520
-        // 940x470
-        // 720x420
-        // 420x350
 
-        function e_1_max_1110() {
-            var x = window.matchMedia("(max-width: 1110)")
-            if (x.matches) { // If media query matches
-                $('#element_1').attr('data-bgimg','assets/img/slider/element_1_1110.webp');
-                console.log('img 1110')  
-            } 
+
+    <script>
+        function makeResize(){
+            if($(window).width() <=767 && $(window).width()>350){
+                document.getElementById("slaider").src = "assets/img/slider/slider_420.webp";
+                document.getElementById("slaider1").src = "assets/img/slider/slider1_420.webp";
+            }else if($(window).width() <=991 ) {
+                document.getElementById("slaider").src = "assets/img/slider/slider_720.webp";
+                document.getElementById("slaider1").src = "assets/img/slider/slider1_720.webp";
+            }else if($(window).width() <=1200 ) {
+                document.getElementById("slaider").src = "assets/img/slider/slider_940.webp";
+                document.getElementById("slaider1").src = "assets/img/slider/slider1_940.webp";
+            }
         }
-        max_700();
+
+        $(document).ready(function(){
+            $(window).resize(function(){
+                makeResize();
+            });
+            makeResize();
+        });
     </script>
+
 </body>
 </html>
 

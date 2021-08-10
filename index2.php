@@ -1,6 +1,5 @@
 <?php
     session_start();
-    echo '=================== inicinado 2'."<br>";
     include_once("funciones/funciones.php");
     $state_popup    = state_popup();
     $destacados     = productos_destacados();
@@ -17,33 +16,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <div class="slider_area owl-carousel">
-                        <!-- <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url; ?>assets/img/slider/slider1.jpg">
-                            <div class="slider_content">
-                                <h2>Calidad Superior</h2>
-                                <h1>Compresor de Pistón</h1>
-                                <a class="button" href="shop.html">Ver compresores</a>
-                                <img src="<?php echo _Url;?>demo.jpg" alt="">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <!-- <img  class="d-block w-100" src="assets/img/slider/slider1.jpg" alt="First slide"> -->
+                                <img id="slaider" class="d-block w-100" src="assets/img/slider/slider.webp" alt="First slide">
                             </div>
-                        </div> 
-                    slider_content => width:
-                    -->
-                        <div class="single_slider d-flex align-items-center" data-bgimg="<?php echo _Url; ?>assets/img/slider/slider2.jpg">
-                            <div class="slider_content">
-                                <h2>Equipamiento Automotriz</h2>
-                                <h1 style="text-align: right">Tenemos todo para su taller</h1>
-                                <a class="button" href="shop.html">Ver mas</a>
-                                <h2 class="owl-item"><img src="<?php echo _Url;?>demo.jpg" alt=""></h2>
-                                
+                            <div class="carousel-item">
+                                <img id="slaider1" class="d-block w-100" src="assets/img/slider/slider1.webp" alt="Second slide">
                             </div>
-                        </div>
-                        <!-- <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider3.jpg"> -->
-                            <!-- <div class="slider_content">
-                                <h2>Pagar ahora es mas</h2>
-                                <h1>Fácil, Rapido y Seguro</h1>
-                                <a class="button" href="shop.html">shopping now</a>
+                            <!-- <div class="carousel-item">
+                                <img class="d-block w-100" src="assets/img/slider/slider1.jpg" alt="Third slide">
                             </div> -->
-                        <!-- </div> -->
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -185,6 +183,29 @@
     <?php //include_once("include/popup.inc.php"); ?>
 
     <?php include_once("include/script.inc.php"); ?>
+
+
+    <script>
+        function makeResize(){
+            if($(window).width() <=767 && $(window).width()>350){
+                document.getElementById("slaider").src = "assets/img/slider/slider_420.webp";
+                document.getElementById("slaider1").src = "assets/img/slider/slider1_420.webp";
+            }else if($(window).width() <=991 ) {
+                document.getElementById("slaider").src = "assets/img/slider/slider_720.webp";
+                document.getElementById("slaider1").src = "assets/img/slider/slider1_720.webp";
+            }else if($(window).width() <=1200 ) {
+                document.getElementById("slaider").src = "assets/img/slider/slider_940.webp";
+                document.getElementById("slaider1").src = "assets/img/slider/slider1_940.webp";
+            }
+        }
+
+        $(document).ready(function(){
+            $(window).resize(function(){
+                makeResize();
+            });
+            makeResize();
+        });
+    </script>
 
 </body>
 </html>
