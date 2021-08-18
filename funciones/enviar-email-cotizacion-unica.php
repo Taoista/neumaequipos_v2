@@ -21,9 +21,9 @@ agregar_cotizacion($nombre,$nombre,$nombre,$email,$telefono,"none","none","none"
 
 $n_cotizacion           = ultima_ctoizacion();
 
-$email_filtrado         = email_algorit_desicion();
+$email_filtrado         = email_algorit_desicion(); 
 
-array_push($correo_admin,$email_filtrado);
+array_push($correo_admin,$email_filtrado); 
 $mysqli->query("INSERT INTO productos_cotizaciones (id_cotizacion, tipo, id_producto, cantidad) VALUES('$n_cotizacion',0,'$id','$cantidad')");
 $mysqli->close();
 

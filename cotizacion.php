@@ -128,7 +128,7 @@ $detalle_producto       =   detalle_producto($idProducto);
                 data: parametros, 
                 type: "POST",
                 // dataType : 'json',
-                url:'../../funciones/enviar-email-cotizacion-unica.php', 
+                url:'../../funciones/enviar-email-cotizacion-unica.php',  
                 beforeSend:function(){
                     Swal.fire({
                         html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',

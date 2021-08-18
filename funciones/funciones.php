@@ -28,6 +28,7 @@ function mostrar_pack(){
   $mysqli->close();
   return $datos;
 }
+
 function email_algorit_desicion(){
   include("../include/conx.php");
   $email_array  = "";
@@ -55,6 +56,7 @@ function email_algorit_desicion(){
   $mysqli->close();
   return $email_retorno;
 }
+
 function datos_contacto($tipo){
   include("include/conx.php");
   $datos = array();
@@ -157,6 +159,7 @@ function seleccionar_regiones(){
   $mysqli->close();
   return $regiones;
 }
+
 function get_correo_admin(){
   include("../include/conx.php");
   $correo_admin = "";
@@ -167,6 +170,7 @@ function get_correo_admin(){
   $mysqli->close();
   return $correo_admin;
 }
+
 function productos_categoria($categoria){
   include("include/conx.php");
   $datos = array();
