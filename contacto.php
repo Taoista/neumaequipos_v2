@@ -47,7 +47,7 @@
                         Contamos con el personal calificado para atenderte</p>
                         <ul>
                             <li style="font-size: 17px;"><i class="fas fa-map-marker-alt"></i>  Dirección : Santa Margarita 0448, San Bernardo</li>
-                            <li style="font-size: 17px;"><i class="fa fa-envelope-o"></i> <a href="#">Info@neumaequipos.cl</a></li>
+                            <li style="font-size: 17px;"><i class="fa fa-envelope-o"></i> <a href="#">postventa@neumaequipos.cl</a></li>
                             <li style="font-size: 17px;"><i class="fa fa-phone"></i><a href="tel:0(1234)567890">+56 9 50114105 </a> </li>
                         </ul>             
                     </div> 
