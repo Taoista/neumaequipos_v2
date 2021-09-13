@@ -3,6 +3,9 @@
     $state_popup    = state_popup();
     $destacados     = productos_destacados();
     include_once("include/head.inc.php");
+
+    $phone_postventa = get_phone(3);
+
 ?>
 <body>
     <?php include_once("include/social_media.php"); ?>
@@ -37,7 +40,7 @@
                         Contamos con el personal calificado para atenderte</p>
                         <ul>
                             <li style="font-size: 17px;"><i class="fas fa-map-marker-alt"></i>  Dirección : Santa Margarita 0448, San Bernardo</li>
-                            <li style="font-size: 17px;"><i class="fa fa-envelope-o"></i> <a href="#">postventa@neumaquipos.cl</a></li>
+                            <li style="font-size: 17px;"><i class="fa fa-envelope-o"></i> <a href="#"><?php echo $phone_postventa["correo"]; ?></a></li>
                             <li style="font-size: 17px;"><i class="fa fa-phone"></i><a href="tel:56959038284">Móvil: +56 9 5903 8284 </a> </li>
                             <li style="font-size: 17px;"><i class="fa fa-phone"></i><a href="tel:56224846074">Anexo: +56 2 2484 6074 </a> </li>
                         </ul>             

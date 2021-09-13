@@ -2,6 +2,23 @@
 const _Iva = 0.19;
 // const _Url = 'http://localhost/neumaequipos_v2/';
 const _Url = "https://neumaequipos.cl/";
+
+function get_phone($id){
+  // 2 => telefono  de contacto
+  // 3 => telefono de postventa
+  include("include/conx.php");
+
+  $datos = array();
+
+  $re = $mysqli->query("SELECT correo FROM telefonos WHERE id = '$id' LIMIT 1") or die($mysqli->error());
+      while($f = $re->fetch_object()){
+        $datos = array("correo" => $f->correo);
+  }
+  $mysqli->close();
+
+  return $datos;
+}
+
 function generar_url($cadena) {
   $separador = '-';//ejemplo utilizado con guión medio
   $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
