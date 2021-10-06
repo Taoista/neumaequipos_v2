@@ -418,6 +418,7 @@ function enviar_contacto(){
   let msg = document.getElementById("msg").value;
   let parametros = {"nombre": btoa(nombre), "email": btoa(email), "asunto": btoa(asunto), "msg": btoa(msg)};
   if(nombre == "" || email == ""){
+    alert("debe llenar los datos");
     Swal.fire('Error','Debe completar los campos del nombre y el correo','error');
   }else{
     $.ajax({
