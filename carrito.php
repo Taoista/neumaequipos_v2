@@ -171,7 +171,7 @@ $neto = $neto_pass + $neto_pass2;
                                             <?php } ?>
 
                                             <td class="product_quantity">
-                                                    <input class="product_quantity" id="<?php echo "cant-item-".$prod_items[$i]['id']; ?>" onchange="cambio_cantidad('<?php echo $prod_items[$i]['id']; ?>','item')" class="form-control quantity" min="0" name="quantity" value="<?php echo $prod_items[$i]['cantidad']; ?>" type="number" disabled>
+                                                    <input class="product_quantity" id="<?php echo "cant-item-".$prod_items[$i]['id']; ?>" onchange="cambio_cantidad('<?php echo $prod_items[$i]['id']; ?>','item')" class="form-control quantity" min="0" name="quantity" value="<?php echo $prod_items[$i]['cantidad']; ?>" type="number">
                                             </td>
                                         <?php if($enabled == true): ?>
                                             <?php if($prod_items[$i]["p_venta"] == 0){ ?>

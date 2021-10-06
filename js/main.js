@@ -337,7 +337,7 @@ function agregar_productos(id){
             span_carrito.innerHTML = response;
             Swal.fire(
               'Cotizador',
-              'Producto agregegado',
+              'Producto Agregado',
               'success'
             )
         }
