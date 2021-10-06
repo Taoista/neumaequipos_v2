@@ -1,5 +1,6 @@
 // const _URL = 'http://localhost/neumaequipos_v2/';
 const _URL = 'https://neumaequipos.cl/';
+
 function llamar_cotizacion(id){
   let cantidad = document.getElementById("cantidad-producto").value;
   window.location.href= _URL+'cotizacion/'+btoa(id)+'/'+btoa(cantidad); 
@@ -115,7 +116,7 @@ function enviar_cotizacion(){
           data: parametros,
           type: "POST",
           // dataType : 'json', 
-          url:  "../funciones/enviar-email-cliente.php",
+          url:  "../funciones/enviar-email-cliente.php", 
           beforeSend:function(){
               Swal.fire({
                   html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
@@ -334,6 +335,11 @@ function agregar_productos(id){
             swal.close();
             // alert(response);
             span_carrito.innerHTML = response;
+            Swal.fire(
+              'Cotizador',
+              'Producto agregegado',
+              'success'
+            )
         }
     });
 }

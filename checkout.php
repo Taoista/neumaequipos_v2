@@ -50,6 +50,11 @@ if(isset($_SESSION["carrito_pack"])){
 }
 $neto = $neto_pass + $neto_pass2;
 $regiones = seleccionar_regiones();
+
+// variable donde desavilito varias columnas
+$enabled = show_optiions();;
+
+
 ?>
 <body>
     <?php include_once("include/social_media.php"); ?>
@@ -139,8 +144,10 @@ $regiones = seleccionar_regiones();
                                 <table>
                                     <thead>
                                         <tr>
+                                            <?php if($enabled == true):?>
                                             <th>Productos</th>
                                             <th>Total</th>
+                                            <?php endif;?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -192,6 +199,7 @@ $regiones = seleccionar_regiones();
                                   <?php } ?>
                               <?php } ?>
                                     </tbody>
+                                    <?php if($enabled == true):?>
                                     <tfoot>
                                       <?php
                                           $neto       =   $neto_pass2 + $neto_pass;
@@ -218,6 +226,7 @@ $regiones = seleccionar_regiones();
                                             <td><strong><?php echo fomato_moneda($total); ?></strong></td>
                                         </tr>
                                     </tfoot>
+                                    <?php endif;?>
                                 </table>
                             </div>
                             <div class="payment_method">

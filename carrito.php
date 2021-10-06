@@ -20,6 +20,9 @@ $prod_items = array();
 $prod_packs = array();
 $neto_pass2 = 0;
 $neto_pass = 0;
+// variable donde desavilito varias columnas
+$enabled = show_optiions();
+
 if(isset($_SESSION["carrito_item"])){
     $c_item = $_SESSION["carrito_item"];
     $prod_items = buscar_datos_productos($c_item);
@@ -82,9 +85,15 @@ $neto = $neto_pass + $neto_pass2;
                                     <th class="product_name">Codigo</th>
                                     <th class="product_thumb">Image</th>
                                     <th class="product_thumb">Descripcion</th>
-                                    <th class="product-price">Precio</th>
+                                    <?php if($enabled == true): ?>
+                                        <th class="product-price">Precio</th>
+                                    <?php else: ?>
+                                        <th class="product-price">Tipo</th>
+                                    <?php endif; ?>
                                     <th class="product_quantity">Cantidad</th>
-                                    <th class="product_total">Total</th>
+                                    <?php if($enabled == true): ?>
+                                        <th class="product_total">Total</th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -120,7 +129,9 @@ $neto = $neto_pass + $neto_pass2;
                                         <td class="product_quantity">
                                             <input id="<?php echo 'cant-pack-'.$prod_packs[$i]['id']; ?>" onchange="cambio_cantidad('<?php echo $prod_packs[$i]['id']; ?>','pack')" min="1" max="100" value="<?php echo $c_pack[$i]['cantidad']; ?>" type="number">
                                         </td>
-                                        <td id="<?php echo 'subt-total-pack-'.$prod_packs[$i]['id']; ?>" class="product_total"><?php echo fomato_moneda($sub_total); ?></td>
+                                        <?php if($enabled == true): ?>
+                                            <td id="<?php echo 'subt-total-pack-'.$prod_packs[$i]['id']; ?>" class="product_total"><?php echo fomato_moneda($sub_total); ?></td>
+                                        <?php endif; ?>
                                     </tr>
                                     <?php } ?>
                                 <?php } ?>
@@ -147,24 +158,28 @@ $neto = $neto_pass + $neto_pass2;
                                             <?php if($prod_items[$i]["oferta"] == 1){ ?>
                                             <p>Oferta <del style="color:red"><?php echo fomato_moneda($prod_items[$i]["p_venta"]); ?></del> </p>
                                             <?php } ?>
-                                        </td>
-                                        <?php if($prod_items[$i]["p_venta"] == 0){ ?>
-                                                <td id="product-price"> Cotización </td>
-                                        <?php }else{ ?>
-                                            <?php if($prod_items[$i]["oferta"] == 1){ ?>
-                                                <td id="<?php echo 'unit-item-'.$prod_items[$i]['id']; ?>" class="product-price"><?php echo fomato_moneda($prod_items[$i]["p_oferta"]); ?></td>
+                                        </td>    
+
+                                            <?php if($prod_items[$i]["p_venta"] == 0){ ?>
+                                                    <td id="product-price"> Cotización </td>
                                             <?php }else{ ?>
-                                                <td id="<?php echo 'unit-item-'.$prod_items[$i]['id']; ?>" class="product-price"><?php echo fomato_moneda($prod_items[$i]["p_venta"]); ?></td>
+                                                <?php if($prod_items[$i]["oferta"] == 1){ ?>
+                                                    <td id="<?php echo 'unit-item-'.$prod_items[$i]['id']; ?>" class="product-price"><?php echo fomato_moneda($prod_items[$i]["p_oferta"]); ?></td>
+                                                <?php }else{ ?>
+                                                    <td id="<?php echo 'unit-item-'.$prod_items[$i]['id']; ?>" class="product-price"><?php echo fomato_moneda($prod_items[$i]["p_venta"]); ?></td>
+                                                <?php } ?>
                                             <?php } ?>
-                                        <?php } ?>
+
                                             <td class="product_quantity">
-                                                    <input class="product_quantity" id="<?php echo "cant-item-".$prod_items[$i]['id']; ?>" onchange="cambio_cantidad('<?php echo $prod_items[$i]['id']; ?>','item')" class="form-control quantity" min="0" name="quantity" value="<?php echo $prod_items[$i]['cantidad']; ?>" type="number">
+                                                    <input class="product_quantity" id="<?php echo "cant-item-".$prod_items[$i]['id']; ?>" onchange="cambio_cantidad('<?php echo $prod_items[$i]['id']; ?>','item')" class="form-control quantity" min="0" name="quantity" value="<?php echo $prod_items[$i]['cantidad']; ?>" type="number" disabled>
                                             </td>
-                                        <?php if($prod_items[$i]["p_venta"] == 0){ ?>
-                                            <td class="product-price"> Cotizacicón </td>
-                                        <?php }else{ ?>
-                                            <td id="<?php echo 'subt-total-item-'.$prod_items[$i]['id']; ?>" class="product_total"><?php echo fomato_moneda($sub_total_2); ?></td>
-                                        <?php } ?>
+                                        <?php if($enabled == true): ?>
+                                            <?php if($prod_items[$i]["p_venta"] == 0){ ?>
+                                                <td class="product-price"> Cotizacicón </td>
+                                            <?php }else{ ?>
+                                                <td id="<?php echo 'subt-total-item-'.$prod_items[$i]['id']; ?>" class="product_total"><?php echo fomato_moneda($sub_total_2); ?></td>
+                                            <?php } ?>
+                                        <?php endif; ?>
                                     </tr>
                                     <?php } ?>
                                 <?php } ?>
@@ -172,13 +187,21 @@ $neto = $neto_pass + $neto_pass2;
                         </table>
                             </div>
                             <div class="cart_submit">
+                                <button onclick="return consultar_estado()" style="background-color:#28937f"> Enviar  cotización </button>
+                            </div>
+                            <div class="cart_submit">
                                 <button onclick="return calcular_carrito()">Actualziar Carrito</button>
+                            </div>
+                            
+                            <div class="checkout_btn">
+                                <!-- <a onclick="return consultar_estado()" href="#" style="color:white;">Pasar al Checkout</a> -->
+                                       <?php //echo _Url.'checkout/'; ?>
                             </div>
                         </div>
                      </div>
                  </div>
                  <!--coupon code area start-->
-                <div class="coupon_area">
+                <!-- <div class="coupon_area">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                         </div>
@@ -188,35 +211,34 @@ $neto = $neto_pass + $neto_pass2;
                                 <div class="coupon_inner">
                                    <div class="cart_subtotal">
                                         <?php
-                                            $neto       =   $neto_pass2 + $neto_pass;
-                                            $iva        =   $neto * _Iva;
-                                            $total      =   $neto + $iva;
+                                            // $neto       =   $neto_pass2 + $neto_pass;
+                                            // $iva        =   $neto * _Iva;
+                                            // $total      =   $neto + $iva;
                                         ?>
                                        <p>Neto</p>
-                                       <p id="neto-final" class="cart_amount"><?php echo fomato_moneda($neto); ?></p>
+                                       <p id="neto-final" class="cart_amount"><?php //echo fomato_moneda($neto); ?></p>
                                    </div>
                                    <div class="cart_subtotal ">
                                        <p>Despacho</p>
                                        <p class="cart_amount"><span>Por Confirmar</span></p>
                                    </div>
-                                   <!-- <a href="#">Calculate shipping</a> -->
                                    <div class="cart_subtotal">
                                        <p>Neto</p>
-                                       <p id="iva-final" class="cart_amount"><?php echo fomato_moneda($iva); ?></p>
+                                       <p id="iva-final" class="cart_amount"><?php //echo fomato_moneda($iva); ?></p>
                                    </div>
                                    <div class="cart_subtotal">
                                        <p>Total</p>
-                                       <p id="total-final" class="cart_amount"><?php echo fomato_moneda($total); ?></p>
+                                       <p id="total-final" class="cart_amount"><?php //echo fomato_moneda($total); ?></p>
                                    </div>
                                    <div class="checkout_btn">
-                                       <a onclick="return consultar_estado()" href="#">Pasar al Checkout</a>
+                                       <a onclick="//return consultar_estado()" href="#">Pasar al Checkout</a>
                                        <?php //echo _Url.'checkout/'; ?>
                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--coupon code area end-->
             </form>
         </div>
@@ -228,13 +250,13 @@ $neto = $neto_pass + $neto_pass2;
 <?php include_once("include/script.inc.php"); ?>
 <script>
     $('.btn-plus, .btn-minus').on('click', function(e) {
-  const isNegative = $(e.target).closest('.btn-minus').is('.btn-minus');
-  const input = $(e.target).closest('.input-group').find('input');
-  if (input.is('input')) {
-    input[0][isNegative ? 'stepDown' : 'stepUp']()
-  }
-  return false;
-})
+        const isNegative = $(e.target).closest('.btn-minus').is('.btn-minus');
+        const input = $(e.target).closest('.input-group').find('input');
+        if (input.is('input')) {
+            input[0][isNegative ? 'stepDown' : 'stepUp']()
+        }
+        return false;
+        })
 </script>
 </body>
 </html>

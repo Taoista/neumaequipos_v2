@@ -1,8 +1,9 @@
 <?php
 session_start();
 include("../funciones/funciones.php");
-$dato_admin = get_correo_admin();
+$dato_admin = get_correo_admin(); 
 $correo_admin = explode(",", $dato_admin);
+$email_diferido = email_algorit_desicion();
 // $correo_admin = array("luis.olave@ingeniopc.cl");
 // $c_item = "";
 // $c_pack = "";
@@ -72,6 +73,8 @@ if($resultado > 0){
    for ($i=0; $i < count($correo_admin) ; $i++) {
     mail($correo_admin[$i],$cliente_asunto,$correo_php,$desde);
   }
+  mail($email_diferido,$cliente_asunto,$correo_php,$desde);
+ 
 
   $retorno = $n_cotizacion;
 }else{

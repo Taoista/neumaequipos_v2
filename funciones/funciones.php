@@ -3,6 +3,29 @@ const _Iva = 0.19;
 // const _Url = 'http://localhost/neumaequipos_v2/';
 const _Url = "https://neumaequipos.cl/";
 
+
+function show_optiions(){
+  
+  include("include/conx_pdo.php");
+
+  $data = "0";
+
+  $sql = "SELECT dato FROM configuracion WHERE tipo = 'ver_cotizador' LIMIT 1";
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+      $data = $f->dato;
+  }
+  $base = null;
+  $result->closeCursor();
+
+  $data = $data == "0" ? false: true;
+
+  return $data;
+}
+
 function get_phone($id){
   // 2 => telefono  de contacto
   // 3 => telefono de postventa
