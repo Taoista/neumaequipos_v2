@@ -77,7 +77,7 @@ $condiciones        = get_condiciones($idProducto);
                             </div>
                             <div class="product_variant quantity">
                                 <?php // NOTA : se cambio ya que solo se pedira de una en el caso de los productos FUNCION ORIIGNAL js  ?> 
-                                <button id="btn-cotizacion" onclick="llamar_cotizacion('<?php echo $idProducto; ?>')"  class="button" >Solicitar</button>
+                                <button id="btn-cotizacion" onclick="llamar_cotizacion('<?php echo $idProducto; ?>')"  class="button" >Solicitar</button> 
                                 <!-- id="btn-cotizacion"  -->
                             </div>
                             <div class="product_meta">

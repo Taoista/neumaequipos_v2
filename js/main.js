@@ -2,9 +2,12 @@
 const _URL = 'https://neumaequipos.cl/';
 
 function llamar_cotizacion(id){
-  let cantidad = document.getElementById("cantidad-producto").value;
-  window.location.href= _URL+'cotizacion/'+btoa(id)+'/'+btoa(cantidad); 
+  console.log("eejcuntadno");
+  console.log(id);
+  // let cantidad = document.getElementById("cantidad-producto").value;
+  window.location.href= _URL+'cotizacion/'+btoa(id)+'/'+btoa(1); 
 }
+
 function consultar_estado(){
   $.ajax({
     // data: parametros, 
