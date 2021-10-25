@@ -118,7 +118,7 @@ $enabled = show_optiions();;
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label>Dirección  <span>*</span></label>
-                                    <input id="direccion" placeholder="House number and street name" type="text">
+                                    <input id="direccion" placeholder="Dirección donde entregar" type="text">
                                 </div>
                                 <div class="col-lg-6 mb-20">
                                     <label>Telefono de contacto<span>*</span></label>
@@ -131,7 +131,7 @@ $enabled = show_optiions();;
                                 <div class="col-12">
                                     <div class="order-notes">
                                          <label for="order_note">Nota</label>
-                                        <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                        <textarea id="order_note" placeholder="Nota para agregar"></textarea>
                                     </div>
                                 </div>
                             </div>

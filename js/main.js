@@ -118,7 +118,7 @@ function enviar_cotizacion(){
       $.ajax({
           data: parametros,
           type: "POST",
-          // dataType : 'json', 
+          // dataType : 'json',  
           url:  "../funciones/enviar-email-cliente.php", 
           beforeSend:function(){
               Swal.fire({
@@ -346,6 +346,7 @@ function agregar_productos(id){
         }
     });
 }
+
 function cotizar_producto(tipo, id){ 
     let cantidad = document.getElementById("cantidad-producto").value;
     let url;
