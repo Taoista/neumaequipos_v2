@@ -271,7 +271,7 @@ $enabled = show_optiions();;
 ============================================ -->
 <?php //include_once("include/popup.inc.php"); ?>
 <?php include_once("include/script.inc.php"); ?>
-<script type="text/javascript">
+<script type="text/javascript"> 
   function selecionar_ciudad(){
     let e = document.getElementById("region");
     let id_region = e.value;
