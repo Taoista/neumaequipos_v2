@@ -249,7 +249,7 @@ $enabled = show_optiions();;
                                     </div>
                                 </div> -->
                                 <div class="order_button">
-                                    <button onclick="return enviar_cotizacion()" type="button">Enviar</button> 
+                                    <button onclick="return enviar_cotizacion()" type="button">Enviar</button>  
                                 </div>
                             </div>
                         </form>

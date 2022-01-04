@@ -1,18 +1,16 @@
 <?php
 session_start();
 include("../funciones/funciones.php");
+include("../funciones/funciones_pdo.php");
+
 $dato_admin = get_correo_admin(); 
 $correo_admin = explode(",", $dato_admin);
-$email_diferido = email_algorit_desicion();
-// $correo_admin = array("luis.olave@ingeniopc.cl");
-// $c_item = "";
-// $c_pack = "";
-//
-// $prod_items = array();
-// $prod_packs = array();
+// $email_diferido = email_algorit_desicion();
 
-// $neto_pass2 = 0;
-// $neto_pass = 0;
+$return_data= get_email_usaurrio();
+
+$correo_vendedor = $return_data[0];
+$id_correo_vendeor = $return_data[1];
 
 $uno = !isset($_SESSION["carrito_pack"]) ? 0: count($_SESSION["carrito_pack"]);
 
@@ -38,8 +36,8 @@ if($resultado > 0){
 
   $nombre_region          = selection_regiones($region); 
 
-  agregar_cotizacion($empresa,$nombre,$apellido,$email,$telefono,$region,$ciudad,$direccion,$nota);
-
+  agregar_cotizacion($empresa,$nombre,$apellido,$email,$telefono,$region,$ciudad,$direccion,$nota,$id_correo_vendeor);
+ 
   $n_cotizacion           = ultima_ctoizacion();
   // $n_cotizacion           = 69;
 
@@ -73,7 +71,7 @@ if($resultado > 0){
    for ($i=0; $i < count($correo_admin) ; $i++) {
     mail($correo_admin[$i],$cliente_asunto,$correo_php,$desde);
   }
-  mail($email_diferido,$cliente_asunto,$correo_php,$desde);
+  mail($correo_vendedor,$cliente_asunto,$correo_php,$desde);
  
 
   $retorno = $n_cotizacion;
