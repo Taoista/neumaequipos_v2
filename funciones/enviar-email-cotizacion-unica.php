@@ -2,22 +2,25 @@
 
 session_start();
 include("../funciones/funciones.php");
+include("../funciones/funciones_pdo.php");
 include("../include/conx.php");
-$dato_admin = get_correo_admin();
+$dato_admin = get_correo_admin();// envio email configuracion
 $correo_admin = explode(",", $dato_admin);
 
+$correo_vendedor = get_email_usaurrio();
+
 $nombre                   = strtolower($_POST["nombre"]);
-$asunto                   = strtolower($_POST["asunto"]); 
+$asunto                   = strtolower($_POST["asunto"]);
 $email                    = strtolower($_POST["email"]);
 $telefono                 = $_POST["telefono"];
-$msg                      = strtolower($_POST["msg"]); 
+$msg                      = strtolower($_POST["msg"]);
 $cantidad                 = $_POST["cantidad"];
 $fecha                    = date("d/m/Y");
 $codigo                   = $_POST["codigo"];
 $titulo                   = $_POST["titulo"];
 $id                       = $_POST["id"];
 
-agregar_cotizacion($nombre,$nombre,$nombre,$email,$telefono,"none","none","none",$msg);
+// agregar_cotizacion($nombre,$nombre,$nombre,$email,$telefono,"none","none","none",$msg);
 
 $n_cotizacion           = ultima_ctoizacion();
 
@@ -49,12 +52,13 @@ $desde                 = 'MIME-Version: 1.0' . "\r\n";
 $desde                 .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
 $desde                 .= "From:"."	neumaequipos.cl <no-reply@neumaequipos.cl>";
 // mail cliente
-mail($email,$cliente_asunto,$correo_php,$desde);
+// mail($email,$cliente_asunto,$correo_php,$desde);
 // mail admin
-for ($i=0; $i < count($correo_admin) ; $i++) {
- mail($correo_admin[$i],$cliente_asunto,$correo_php,$desde);
+mail($correo_vendedor,$cliente_asunto,$correo_php,$desde);
+
+// for ($i=0; $i < count($correo_admin) ; $i++) {
 //  mail($correo_admin[$i],$cliente_asunto,$correo_php,$desde);
-}
+// }
 
 echo "terminar";
 

@@ -23,7 +23,7 @@ if(isset($_SESSION["carrito_item"])){
         }else{
             array_push($neto_conteo,($prod_items[$i]["p_venta"] * $prod_items[$i]["cantidad"] ));
         }
-         array_push($item_session_carrito,array("id" => $prod_items["id"], "codigo" => $prod_items[$i]["codigo"], "descripcion" => $prod_items[$i]["descripcion"], 
+         array_push($item_session_carrito,array("id" => $prod_items["id"], "codigo" => $prod_items[$i]["codigo"], "descripcion" => $prod_items[$i]["descripcion"],
                                             "oferta" => $prod_items[$i]["oferta"], "p_oferta" => $prod_items[$i]["p_oferta"], "p_venta" => $prod_items[$i]["p_venta"],
                                             "cantidad" => $prod_items[$i]["cantidad"]));
     }
@@ -41,7 +41,7 @@ if(isset($_SESSION["carrito_pack"])){
         }else{
             array_push($neto_conteo,($prod_packs[$i]["p_venta"] * $prod_packs[$i]["cantidad"]) );
         }
-        array_push($pack_session_carrito,array("id" => $prod_packs[$i]["id"], "codigo" => $prod_packs[$i]["codigo"], "descripcion" => $prod_packs[$i]["descripcion"], 
+        array_push($pack_session_carrito,array("id" => $prod_packs[$i]["id"], "codigo" => $prod_packs[$i]["codigo"], "descripcion" => $prod_packs[$i]["descripcion"],
                                                 "oferta" => $prod_packs[$i]["oferta"], "p_oferta" => $prod_packs[$i]["p_oferta"], "p_venta" => $prod_packs[$i]["p_venta"],
                                                 "cantidad" => $prod_packs[$i]["cantidad"]));
     }
@@ -173,7 +173,7 @@ $enabled = show_optiions();;
                                 <?php if($c_item === ""){?>
                                 <?php }else{ ?>
                                     <?php for ($i=0; $i < count($prod_items) ; $i++) { ?>
-                                        <?php 
+                                        <?php
                                             if( $prod_items[$i]["p_venta"] == 0 ){
                                                 $sub_total_2 = "Cotizacicón";
                                             }else{
@@ -182,16 +182,16 @@ $enabled = show_optiions();;
                                                 }else{
                                                     $sub_total_2 = $prod_items[$i]['cantidad'] * $prod_items[$i]["p_venta"];
                                                 }
-                                            }   
+                                            }
                                         ?>
                                     <tr>
                                         <td> <?php echo $prod_items[$i]["descripcion"]; ?> <strong><?php echo "× ".$prod_items[$i]["cantidad"]; ?></strong></td>
-                                        <td> 
-                                            <?php 
+                                        <td>
+                                            <?php
                                                 if($prod_items[$i]["p_venta"] == 0){
                                                     echo "Cotizacicón";
                                                 }else{
-                                                    echo fomato_moneda($sub_total_2); 
+                                                    echo fomato_moneda($sub_total_2);
                                                 }
                                             ?>
                                         </td>
@@ -249,7 +249,7 @@ $enabled = show_optiions();;
                                     </div>
                                 </div> -->
                                 <div class="order_button">
-                                    <button onclick="return enviar_cotizacion()" type="button">Enviar</button>
+                                    <button onclick="return enviar_cotizacion()" type="button">Enviar</button> 
                                 </div>
                             </div>
                         </form>
@@ -271,7 +271,7 @@ $enabled = show_optiions();;
 ============================================ -->
 <?php //include_once("include/popup.inc.php"); ?>
 <?php include_once("include/script.inc.php"); ?>
-<script type="text/javascript"> 
+<script type="text/javascript">
   function selecionar_ciudad(){
     let e = document.getElementById("region");
     let id_region = e.value;
@@ -290,7 +290,7 @@ $enabled = show_optiions();;
                 showCancelButton: false,
                 focusConfirm: false,
                 showConfirmButton:false,
-              }) 
+              })
               $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)');
               $(".swal2-title").css("color","white");
         },

@@ -5,7 +5,7 @@ const _Url = "https://neumaequipos.cl/";
 
 
 function show_optiions(){
-  
+
   include("include/conx_pdo.php");
 
   $data = "0";
@@ -201,6 +201,7 @@ function seleccionar_regiones(){
 }
 
 function get_correo_admin(){
+  // cantidad de cotizacion emial reponsable
   include("../include/conx.php");
   $correo_admin = "";
   $re = $mysqli->query("SELECT dato FROM configuracion WHERE tipo = 'correo_admin' ") or die(mysql_error());
@@ -210,6 +211,42 @@ function get_correo_admin(){
   $mysqli->close();
   return $correo_admin;
 }
+//
+// function get_email_usaurrio(){
+//     include("../include/conx.php");
+//
+//     $cantidad = array();
+//
+//     $re = $mysqli->query("SELECT email FROM email_diferido") or die(mysql_error());
+//         while($f = $re->fetch_object()){
+//             array_push($cantidad,$f->email);
+//     }
+//
+//     $data = "";
+//     $cont = 1;
+//
+//     $re = $mysqli->query("SELECT cont, email FROM email_diferido WHERE estado = 1 LIMIT 1") or die(mysql_error());
+//         while($f = $re->fetch_object()){
+//           $data = $f->email;
+//           $cont = $f->cont;
+//     }
+//
+//     $mysqli->query("UPDATE email_diferido SET estado = 0");
+//     // 2                  1
+//     if(count($cantidad)  >= $cant){
+//       // resetear a 1
+//       $mysqli->query("UPDATE email_diferido SET estado = 1 WHERE cont = 1");
+//     }else{
+//       // se suma 1
+//       $update = $cont + 1
+//       $mysqli->query("UPDATE email_diferido SET estado = 1 WHERE cont = '$update'");
+//     }
+//     // 3 -> 0, 1, 2
+//     $mysqli->close();
+//
+//     return "taoista.games@gmail.com";
+// }
+
 
 function productos_categoria($categoria){
   include("include/conx.php");
@@ -513,7 +550,7 @@ function detalle_pack(){
   include("includes/conx.php");
   $datos = array();
 
-  
+
 
 
 
