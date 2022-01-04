@@ -23,15 +23,17 @@ function get_email_usaurrio(){
     $result->execute();
 
     while($f = $result->fetch(PDO::FETCH_OBJ)){
-        $data = $f->email;
         $cont = $f->cont;
+        $data = $f->email;
     }
+
+    $cont_select = $cont;
 
     $sql = "UPDATE email_diferido SET estado = 0";
     $stmt= $base->prepare($sql);
     $stmt->execute();
-    // 2                  1
-    if(count($cantidad)  > $cant){
+                // 2          1
+    if(count($cantidad)  > $cont){
       // resetear a 1
       $update = $cont + 1;
       $sql = "UPDATE email_diferido SET estado = 1 WHERE cont = '$update'";
@@ -47,7 +49,7 @@ function get_email_usaurrio(){
     $base = null;
     $result->closeCursor();
 
-    return $data;
+    return array($data,$cont_select);
 }
 
  ?>

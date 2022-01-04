@@ -174,10 +174,10 @@ function agregar_productos_cotizados($n_cotizacion){
   }
   $mysqli->close;
 }
-function agregar_cotizacion($empresa,$nombre,$apellido,$email,$telefono,$region,$ciudad,$direccion,$nota){
+function agregar_cotizacion($empresa,$nombre,$apellido,$email,$telefono,$region,$ciudad,$direccion,$nota, $id_email_diferido){
   include("../include/conx.php");
-  $mysqli->query("INSERT INTO cotizaciones (empresa,nombre,apellido,email,telefono,region,ciudad,direccion,nota)
-                  VALUES('$empresa','$nombre','$apellido','$email','$telefono','$region','$ciudad','$direccion','$nota')");
+  $mysqli->query("INSERT INTO cotizaciones (empresa,nombre,apellido,email,telefono,region,ciudad,direccion,nota,id_email_diferido)
+                  VALUES('$empresa','$nombre','$apellido','$email','$telefono','$region','$ciudad','$direccion','$nota', '$id_email_diferido')");
   $mysqli->close;
 }
 function ultima_ctoizacion(){
