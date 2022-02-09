@@ -65,7 +65,6 @@ function verificar_rut(){
 }
 function enviar_cotizacion(){
   let Fn = {
-      // Valida el rut con su cadena completa "XXXXXXXX-X"
       validaRut : function (rutCompleto) {
         if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
           return false;
@@ -98,27 +97,45 @@ function enviar_cotizacion(){
     let parametros = {"nombre": nombre, "apellido": apellido, "empresa": empresa, "rut": rut, "region": id_region, "ciudad": id_ciudad, "direccion":direccion, "telefono": telefono, "email": email, "nota":nota};
     if(nombre == "" || apellido == "" || empresa == "" || rut == "" || direccion == "" || telefono == "" || email == ""){
       Swal.fire('Error','debellenar los campos','error');
+      return false;
+
     }else if (nombre.length < 4) {
       Swal.fire('Error Nombre','El Nombre es muy corto','error');
+    return false;
+
     }else if (apellido.length < 4) {
       Swal.fire('Error Apellido','El Apellido es muy corto','error');
+    return false;
+
     }else if (!Fn.validaRut(rut)) {
       Swal.fire('Error RUT','el Rut es invalido','error');
+    return false;
+
     }else if (id_region == "0") {
       Swal.fire('Error Región','Debe selecionar Región','error');
+    return false;
+
     }else if (id_ciudad == "0") {
       Swal.fire('Error Ciudad','Debe selecionar Ciudad','error');
+    return false;
+
     }else if (direccion === "") {
       Swal.fire('Error Dirección','Debe ingresar su dirección','error');
+    return false;
+
     }else if (telefono.length > 13) {
       Swal.fire('Error Telefono','Debe Ingresar Telefono valido','error');
+    return false;
+
     }else if (!emailRegex.test(email)) {
       Swal.fire('Error email','Debe selecionar email valido','error');
+    return false;
+
     }else{
       $.ajax({
           data: parametros,
           type: "POST",
-          // dataType : 'json',  
+          // dataType : 'json', 
           url:  "../funciones/enviar-email-cliente.php", 
           beforeSend:function(){
               Swal.fire({
@@ -167,6 +184,7 @@ function enviar_cotizacion(){
     Swal.fire('Correo Enviado','Nos contactaremos en breve con Ud. Muchas Gracias!','success');
     return false;
 }
+
 function redireccionar_inicio(){
   window.location = _URL;
 }
@@ -346,7 +364,6 @@ function agregar_productos(id){
         }
     });
 }
-
 function cotizar_producto(tipo, id){ 
     let cantidad = document.getElementById("cantidad-producto").value;
     let url;
