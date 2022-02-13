@@ -10,23 +10,26 @@ $top = top_productos(6);
                         <h2><span> <strong>Top Más</strong>Valorados</span></h2>
                     </div>
                     <div class="product_carousel product_column5 owl-carousel">
-                        <?php for ($i=0; $i < count($top) ; $i++) { ?>
+                        <?php 
+                            for ($i=0; $i < count($top) ; $i++) { 
+                            $link = _Url.'producto/'.$top[$i]["id"].'/'.generar_url($top[$i]["nombre"]);   
+                            ?>
                         <div class="single_product">
                             <div class="product_name">
-                                <h3><a href="product-details.html"><?php $top[$i]["nombre"] ?></a></h3>
-                                <p class="manufacture_product"><a href="#">Accessories</a></p>
+                                <h3><a href="<?php echo $link; ?>"><?php $top[$i]["nombre"] ?></a></h3>
+                                <!-- <p class="manufacture_product"><a href="#">Accessories</a></p> -->
                             </div>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-details.html"><img src="<?php echo _Url."productos/".$top[$i]["img"].".jpg"; ?>" alt=""></a>
-                                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product11.jpg" alt=""></a>
+                                <a class="primary_img" href="<?php echo $link; ?>"><img src="<?php echo _Url."productos/".$top[$i]["img"].".jpg"; ?>" alt=""></a>
+                                <a class="secondary_img" href="<?php echo $link; ?>"><img src="<?php echo _Url."productos/".$top[$i]["img"].".jpg"; ?>" alt=""></a>
                                 <?php if($top[$i]["of"] == 1){ ?>
                                 <div class="label_product"><span class="label_sale">OFERTA</span></div>
                                 <?php } ?>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                        <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                        <li class="quick_button"><a href="<?php echo $link; ?>" data-toggle="modal" data-target="#modal_box"  title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                                        <li class="wishlist"><a href="<?php echo $link; ?>" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                        <li class="compare"><a href=<?php echo $link; ?>" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
                                 </div>
                             </div>

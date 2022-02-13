@@ -2,10 +2,18 @@
 session_start();
 include_once("include/head.inc.php");
 include_once("funciones/funciones.php");
-$idProducto             =   base64_decode($_GET["idProducto"]);
-$cantidad               =   base64_decode($_GET["cantidad"]);
-$detalle_producto       =   detalle_producto($idProducto);
+// include_once("funciones/funciones_pdo.php");
+
+$idPack                     =   $_GET["idPack"];
+
+
+$data_pack                 =    get_data_pack($idPack);
+
+// $idProducto             =   base64_decode($_GET["idProducto"]);
+// $cantidad               =   base64_decode($_GET["cantidad"]);
+// $detalle_producto       =   detalle_producto($idProducto);
 $phone_postventa = get_phone(2);
+
 ?>
 <body>
     <?php include_once("include/social_media.php"); ?>
@@ -33,18 +41,20 @@ $phone_postventa = get_phone(2);
                         <div class="blog_wrapper">
                             <div class="single_blog">
                                 <div class="blog_thumb">
-                                    <a href="blog-details.html"><img style="width:250px;" src="<?php echo _Url.'productos/'.$detalle_producto["img"].'.jpg'; ?>" alt=""></a>
+                                    <a href="blog-details.html"><img style="width:250px;" src="<?php echo _Url.'assets/img/pack/'.$data_pack["id"].'.jpg'; ?>" alt=""></a>
                                 </div>
                                 <div class="blog_content">
-                                    <h3><a href="blog-details.html" id="nombre-producto"><?php echo $detalle_producto["nombre"]; ?></a></h3>
+                                    <h3><a href="blog-details.html" id="nombre-producto"><?php echo $detalle_producto["descripcion"]; ?></a></h3>
                                     <div class="blog_meta">
-                                        <span id="id-unico"><?php echo $idProducto; ?></span>
-                                        <span class="post_date"><i class="fa fa-wpforms"></i> Código <span id="codigo-unica"><?php echo $detalle_producto["codigo"]; ?></span></span>
-                                        <span class="author"><i class="fa fa-bullseye"></i> Categoria : <?php echo $detalle_producto["tipo"] ?> </span>
-                                        <span class="author"><i class="fa fa-bullseye"></i> Cant : <span id="cantidad-unica"><?php echo $cantidad; ?></span></span>
+                                        <span><?php echo $detalle_producto["codigo"]; ?></span>
+                                        <span class="post_date"><i class="fa fa-wpforms"></i> Código <span id="codigo-unica"><?php echo $data_pack["descripcion"]; ?></span></span>
+                                        <span class="author"><i class="fa fa-bullseye"></i> Categoria : PACK OFERTA </span>
                                     </div>
                                     <div class="blog_desc">
                                         <p>Cliente es responsable de contar con grúa para recibir carga </p>
+                                    </div>
+                                    <div class="blog_desc">
+                                        <p> Total a pago <?php echo fomato_moneda(ceil( $data_pack["p_oferta"] + ($data_pack["p_oferta"] * _Iva)));  ?></p>
                                     </div>
                                     <!-- <div class="readmore_button">
                                         <a href="blog-details.html">read more</a>
@@ -88,76 +98,43 @@ $phone_postventa = get_phone(2);
                                <label>  Email (importante)</label>
                                 <input id="email" name="email" placeholder="ingresa aquí  *" type="email">
                             </p>
+
                             <p>
-                               <label>  Asunto</label>
-                                <input id="asunto" name="subject" placeholder="ingresa aquí  *" type="text">
+                               <label>  Region </label>
+                                <input id="region" name="subject" placeholder="ingresa aquí  *" type="text">
                             </p>
+
+                            <p>
+                               <label>  Ciudad </label>
+                                <input id="ciudad" name="subject" placeholder="ingresa aquí  *" type="text">
+                            </p>
+
+                            <p>
+                               <label>  Direccion </label>
+                                <input id="direccion" name="subject" placeholder="ingresa aquí  *" type="text">
+                            </p>
+
                             <div class="contact_textarea">
                                 <label>  Mensaje</label>
                                 <textarea id="msg" placeholder="Mensaje *" name="Escribe aquí "  class="form-control2" ></textarea>
                             </div>
-                            <button onclick="return enviar_cotizacion_unica()"> Enviar</button>
+                            <button onclick="return pagar_transbank_pack()"> Pagar</button>
                             <p class="form-messege"></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <input type="text" id="id-unico" value="<?php echo $_GET["idPack"]; ?>" style="display:none;">
+
     <?php include_once('include/folowus.inc.php'); ?>
    <?php include_once('include/footer.inc.php'); ?>
 <?php //include_once("include/popup.inc.php"); ?>
 <?php include_once("include/script.inc.php"); ?>
 <script>
-    function enviar_cotizacion_unica(){
-        let idPorducto = document.getElementById("id-unico").innerHTML;
-        let codigo = document.getElementById("codigo-unica").innerHTML;
-        let titulo = document.getElementById("nombre-producto").innerHTML;
-        let nombre = document.getElementById("name").value;
-        let email = document.getElementById("email").value;
-        let asunto = document.getElementById("asunto").value;
-        let telefono = document.getElementById("telefono").value;
-        let msg = document.getElementById("msg").value;
-        let cantidad = document.getElementById("cantidad-unica").innerHTML;
-        let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if(nombre == "" || email == "" || asunto == "" || msg == ""){
-            Swal.fire('Error','debe llenar los campos','error');
-        }else if (!emailRegex.test(email)) {
-            Swal.fire('Error email','Debe selecionar email valido','error');
-        }else{
-            let parametros = {"nombre" : nombre, "telefono" : telefono, "email" : email, "asunto" : asunto, "msg" : msg, "cantidad": cantidad, "codigo" : codigo, "titulo" : titulo, "id": idPorducto };
-            $.ajax({
-                data: parametros,
-                type: "POST",
-                // dataType : 'json',
-                url:'../../funciones/enviar-email-cotizacion-unica.php', 
-                beforeSend:function(){
-                    Swal.fire({
-                        html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
-                        title: 'Espere..',
-                        showCloseButton: false,
-                        showCancelButton: false,
-                        focusConfirm: false,
-                        showConfirmButton:false,
-                    })
-                    $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)');//Optional changes the color of the sweetalert
-                    $(".swal2-title").css("color","white");
-                },
-                success:function(response){
-                    swal.close();
-                    setTimeout(redireccionar_inicio,4000);
-                    Swal.fire(
-                    'Cotización',
-                    'Se envió correctamente',
-                    'success'
-                    )
-                }
-            });
-        }
-        return false;
-    }
-    function redireccionar_inicio(){
-        window.location = "https://neumaequipos.cl/";
-    }
+    
+ 
 </script>
 </body>
 </html>

@@ -479,5 +479,66 @@ function enviar_contacto(){
 }
 
 function buy_pack(tipo, id_pack){
-  alert(id_pack);
+  // alert(id_pack);
+  console.log("enviar cotiszacion");
+}
+
+function tbk_demo(e,tipo, id_pack){
+  e.preventDefault();
+  // alert(id_pack);
+  window.location.href = "../compra_pack/"+id_pack;
+}
+
+function pagar_transbank_pack(){
+  let idPorducto = document.getElementById("id-unico").value;
+  // let codigo = document.getElementById("codigo-unica").innerHTML;
+  // let titulo = document.getElementById("nombre-producto").innerHTML;
+  let nombre = document.getElementById("name").value;
+  let telefono = document.getElementById("telefono").value;
+  let email = document.getElementById("email").value;
+  let region = document.getElementById("region").value;
+  let ciudad = document.getElementById("ciudad").value;
+  let direccion = document.getElementById("direccion").value;
+  let msg = document.getElementById("msg").value;
+  // let cantidad = document.getElementById("cantidad-unica").innerHTML;
+  let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  
+  
+  if(nombre == "" || telefono == "" || email == "" || region == "" || direccion == "" || ciudad == ""){
+      Swal.fire('Error','debe llenar los campos','error');
+  }else if (!emailRegex.test(email)) {
+      Swal.fire('Error email','Debe selecionar email valido','error');
+  }else{
+      let parametros = {"nombre" : nombre, "telefono" : telefono, "email" : email, "region" : region, "msg" : msg, "ciudad": ciudad, "direccion" : direccion,  "id": idPorducto };
+      // window.location.href = "../../../funciones/pgo_pack_transbank.php.php?nombre="+nombre+"&telefono="+telefono+"&email="+email+"&region="+region+"&msg="+msg+"&ciudad="+ciudad+"&direccion="+direccion+"&idPorducto="+idPorducto;
+      //https://neumaequipos.cl/funciones/pgo_pack_transbank.php?nombre=nombr&telefono=09099090&email=demo@demo.cl&region=region&msg=paiaqajak&ciudad=ciduad&direccion=demodemeo&idPorducto=4
+    
+      $.ajax({
+        data: parametros,
+        type: "POST",
+        crossDomain: true,
+        // dataType : 'json',
+        url:'https://nt2.neumatruck.cl/api/iniciar_compra', 
+        beforeSend:function(){
+            Swal.fire({
+                html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+                title: 'Enviando',
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                showConfirmButton:false,
+            })
+            $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)');//Optional changes the color of the sweetalert
+            $(".swal2-title").css("color","white");
+        },
+        success:function(response){ 
+          window.location.href = response;
+        }
+      });
+    
+    
+    }
+
+
+  // return false;
 }

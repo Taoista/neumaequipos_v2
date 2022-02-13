@@ -4,6 +4,90 @@ const _Iva = 0.19;
 const _Url = "https://neumaequipos.cl/";
 
 
+function productos_pack($id){
+  include("./include/conx_pdo.php");
+
+  $data = array();
+
+  $sql = "SELECT p.descripcion
+          FROM productos AS p 
+          INNER JOIN productos_packs AS pp
+          ON pp.id_producto = p.id
+          INNER JOIN compras AS c
+          ON c.id_pack = pp.id_pack
+          INNER JOIN transbank AS t
+          ON c.id = t.id_compra
+          WHERE t.id = '$id' ";
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+    array_push($data, array("descripcion" => $f->descripcion));
+  }
+
+  $base = null;
+  $result->closeCursor();
+
+  return $data;
+
+}
+
+function get_data_compra_tbk($id){
+  include("./include/conx_pdo.php");
+  
+  $data = array();
+
+  $sql = "SELECT t.status ,t.fecha, t.card_detail, t.payment_type_code, t.installments_amount, 
+                t.installments_number, t.total, p.img, p.descripcion, c.enviado, ptc.nombre AS tipo_pago,
+                c.nombre AS c_nombre, c.telefono AS telefono, c.email, c.region, c.ciudad, c.direccion
+          FROM transbank AS t 
+          INNER JOIN compras AS c
+          ON t.id_compra = c.id
+          INNER JOIN packs AS p
+          ON c.id_pack = p.id
+          INNER JOIN payment_type_code AS ptc
+          ON t.payment_type_code = ptc.tipe
+          WHERE t.id = '$id'";
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+    $data = array("status" => $f->status, "fecha" => $f->fecha, "card_detail" => $f->card_detail, "payment_type_code" => $f->payment_type_code, 
+                "installments_amount" => $f->installments_amount, "installments_number" => $f->installments_number, "total" => $f->total, 
+                "img" => $f->img, "descripcion" => $f->descripcion, "enviado" => $f->enviado, "tipo_pago" => $f->tipo_pago,
+                "c_nombre" => $f->c_nombre, "telefono" => $f->telefono, "email" => $f->email, "region" => $f->region, "ciudad" => $f->ciudad, 
+                "direccion" =>$f->direccion);
+  }
+
+  $base = null;
+  $result->closeCursor();
+
+  return $data;
+}
+
+function get_data_pack($id){
+  include("./include/conx_pdo.php");
+
+  $data = array();
+
+  $sql = "SELECT id, codigo, descripcion, p_venta, oferta, p_oferta, img FROM packs WHERE id = '$id'";
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+    $data = array("id" => $f->id, "codigo" => $f->codigo, "descripcion" => $f->descripcion, "p_venta" => $f->p_vemta, "oferta" => $f->oferta,"p_oferta" => $f->p_oferta, "p_venta" => $f->p_venta, "img" => $f->img);
+  }
+
+  $base = null;
+  $result->closeCursor();
+
+  return $data;
+}
+
+
 function show_optiions(){
 
   include("include/conx_pdo.php");

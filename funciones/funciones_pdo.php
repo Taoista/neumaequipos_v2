@@ -1,5 +1,23 @@
 <?php
 
+function get_data_pack(){
+  include("../../../include/conx_pdo.php");
+
+  $data = array();
+
+  $sql = "SELECT id, codigo, desciprion, p_venta, oferta ,p_oferta, img FROM packs WHERE estado = 1";
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+    array_push($data, array("id" => $f->id, "codigo" => $f->codigo, "desciprion" => $f->desciprion, "p_venta" => $f->p_vemta, "oferta" => $f->p_venta, "p_venta" => $f->p_venta, "img" => $f->img));
+  }
+
+  $base = null;
+  $result->closeCursor(); 
+}
+
 function get_email_usaurrio(){
     include("../include/conx_pdo.php");
 
