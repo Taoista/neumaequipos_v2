@@ -64,13 +64,29 @@ $lbl                    =   get_lbl_seo($categoria);
                                     </div>
                                     <div class="product_content grid_content">
                                         <div class="content_inner">
-                                            <div class="product_ratings">
+                                            <div class="product_ratings"> 
                                                 <ul>
                                                     <?php for ($x=0; $x < $productos[$i]["star"]; $x++) { ?>
                                                         <li><a href="javascript.void(0);"><i class="ion-star"></i></a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>
+                                            <?php
+                                            // marca puli id => 3 y 4 
+                                            if( ($productos[$i]["id_marca"] == 3 OR $productos[$i]["id_marca"] == 4) AND $productos[$i]["stock"] !=0){
+                                            ?>
+                                                <div class="product_footer d-flex align-items-center">
+                                                <div class="price_box">
+                                                    <span class="current_price"><?php echo fomato_moneda($productos[$i]["p_venta"]).'+ iva'; ?></span>
+                                                    <!-- <span class="old_price">$3200.00</span> -->
+                                                </div>
+                                                <!-- <div class="add_to_cart">
+                                                    <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                                </div> -->
+                                            </div>
+                                            <?php
+                                                }
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="product_content list_content">

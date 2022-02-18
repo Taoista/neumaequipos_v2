@@ -553,7 +553,7 @@ function buscar_productos($palabra,$tipos,$marcas,$orden,$desde,$hasta){
   }else{
     $busqueda2 = "";
   }
-  $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre, m.nombre AS marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img
+  $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre, p.id_marca ,m.nombre AS marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.stock,p.img
   FROM productos AS p
   INNER JOIN tipos AS t
   ON p.id_tipo = t.id
@@ -567,8 +567,8 @@ function buscar_productos($palabra,$tipos,$marcas,$orden,$desde,$hasta){
   ") or die($mysqli->error);
   while($f = $re->fetch_object()){
   array_push($datos,array("id" => $f->id, "codigo" => $f->codigo, "descripcion" => $f->descripcion, "star" => $f->star,
-              "tipo" => $f->nombre, "marca" => $f->marca, "origen" => $f->nombre, "of" => $f->oferta,
-              "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img ));
+              "tipo" => $f->nombre, "id_marca" => $f->id_marca, "marca" => $f->marca, "origen" => $f->nombre, "of" => $f->oferta,
+              "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "stock" => $f->stock,"img" => $f->img ));
   }
   mysqli_close($mysqli);
   return $datos;
@@ -609,7 +609,7 @@ function imagenes_productos($id){
 function detalle_producto($id){
     include("include/conx.php");
     $datos = array();
-    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre AS tipo, m.nombre, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img, d.detalle, p.id_tipo
+    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre AS tipo, m.nombre, p.id_marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img, d.detalle, p.id_tipo, p.stock
                         FROM productos AS p
                         INNER JOIN tipos AS t
                         ON p.id_tipo = t.id
@@ -622,9 +622,9 @@ function detalle_producto($id){
                         WHERE p.id = '$id' ") or die($mysqli->error);
     while($f = $re->fetch_object()){
        $datos = array("id" => $f->id, "codigo" => $f->codigo, "nombre" => $f->descripcion, "star" => $f->star,
-                                "tipo" => $f->tipo, "marca" => $f->nombre, "origen" => $f->nombre, "of" => $f->oferta,
-                                "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img, "detalle" => $f->detalle,
-                                "relacion" => $f->id_tipo);
+                      "tipo" => $f->tipo, "marca" => $f->nombre, "origen" => $f->nombre, "of" => $f->oferta,
+                      "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img, "detalle" => $f->detalle,
+                      "relacion" => $f->id_tipo, "stock" => $f->stock, "id_marca" => $f->id_marca );
     }
     mysqli_close($mysqli);
     return $datos;
@@ -769,7 +769,7 @@ function productos_oferta(){
 function seleccionar_productos($id){
     include("include/conx.php");
     $productos = array();
-    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre AS tipo, m.nombre AS marca, id_marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img
+    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre AS tipo, m.nombre AS marca, id_marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img, p.stock
                         FROM productos AS p
                         INNER JOIN tipos AS t
                         ON p.id_tipo = t.id
@@ -781,7 +781,7 @@ function seleccionar_productos($id){
     while($f = $re->fetch_object()){
        array_push($productos,array("id" => $f->id, "codigo" => $f->codigo, "descripcion" => $f->descripcion, "star" => $f->star,
                                 "tipo" => $f->tipo, "marca" => $f->marca, "id_marca" => $f->id_marca,"origen" => $f->nombre, "of" => $f->oferta,
-                                "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img ));
+                                "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img, "stock" => $f->stock ));
     }
     $mysqli->close();
     return $productos;
