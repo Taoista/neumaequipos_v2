@@ -16,6 +16,7 @@ RewriteRule ^compra_pack/(.*)                        compra_pack.php?idPack=$1
 
 
 RewriteRule ^producto/([0-9]+)/([a-zA-Z]+)           producto.php?idProducto=$1&nombre=$2
+RewriteRule ^producto2/([0-9]+)/([a-zA-Z]+)           producto2.php?idProducto=$1&nombre=$2
 RewriteRule ^categoria/([0-9]+)/([a-zA-Z]+)          categoria.php?idNac=$1&titulo=$1
 RewriteRule ^resultado/(.*)/(.*)/(.*)/(.*)/(.*)      resultado.php?tipos=$1&marcas=$2&orden=$3&pagina=$4&busqueda=$5
 RewriteRule ^ofertas/                                ofertas.php

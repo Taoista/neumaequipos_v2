@@ -67,7 +67,7 @@ function get_data_compra_tbk($id){
   return $data;
 }
 
-function get_data_pack($id){
+function get_data_pack($id){ 
   include("./include/conx_pdo.php");
 
   $data = array();

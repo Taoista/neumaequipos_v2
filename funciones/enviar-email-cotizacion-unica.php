@@ -12,7 +12,7 @@ $return_data= get_email_usaurrio();
 $correo_vendedor = $return_data[0];
 $id_correo_vendeor = $return_data[1];
 
-
+ 
 $nombre                   = strtolower($_POST["nombre"]);
 $asunto                   = strtolower($_POST["asunto"]);
 $email                    = strtolower($_POST["email"]);

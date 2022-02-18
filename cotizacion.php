@@ -103,7 +103,7 @@ $phone_postventa = get_phone(2);
             </div>
         </div>
     </div>
-    <?php include_once('include/folowus.inc.php'); ?>
+    <?php include_once('include/folowus.inc.php'); ?> 
    <?php include_once('include/footer.inc.php'); ?>
 <?php //include_once("include/popup.inc.php"); ?>
 <?php include_once("include/script.inc.php"); ?>

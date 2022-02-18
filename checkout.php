@@ -247,7 +247,7 @@ $enabled = show_optiions();;
                                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div> --> 
                                 <div class="order_button"> 
                                     <button onclick="return enviar_cotizacion()" type="button">Enviar</button>
                                 </div>

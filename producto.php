@@ -71,15 +71,13 @@ $condiciones        = get_condiciones($idProducto);
                           
                            
                             <div class="product_variant quantity">
-                                <?php // NOTA : se cambio ya que solo se pedira de una en el caso de los productos FUNCION ORIIGNAL js  ?> 
                                 <button id="btn-cotizacion" onclick="agregar_productos('<?php echo $idProducto; ?>')"  class="button" >Agregar a Cotización</button>
-                                <!-- id="btn-cotizacion"  -->
                             </div>
                             <div class="product_variant quantity">
-                                <?php // NOTA : se cambio ya que solo se pedira de una en el caso de los productos FUNCION ORIIGNAL js  ?> 
                                 <button id="btn-cotizacion" onclick="llamar_cotizacion('<?php echo $idProducto; ?>')"  class="button" >Solicitar</button> 
-                                <!-- id="btn-cotizacion"  -->
                             </div>
+                            <!-- <span>En mantenimiento, favor llamar al numero +56 9 5912 0748</span> -->
+                            
                             <div class="product_meta">
                                 <span>Categoria: <a href="#"><?php echo $detalle_producto["tipo"]; ?></a></span>
                             </div>
@@ -91,6 +89,7 @@ $condiciones        = get_condiciones($idProducto);
                             <ul>
                                 <li><a class="twitter" href="#" title="instagram"><i class="fa fa-instagram"></i> Instagram</a></li>
                                 <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
+                                <!-- <span>En mantenimiento, favor llamar al numero +56 9 5912 0748</span> -->
                             </ul>
                         </div>
                     </div>

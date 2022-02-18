@@ -63,7 +63,7 @@ function verificar_rut(){
       console.log("coaultando error de alerta");
     }
 }
-function enviar_cotizacion(){
+function enviar_cotizacion(){ 
   let Fn = {
       validaRut : function (rutCompleto) {
         if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
