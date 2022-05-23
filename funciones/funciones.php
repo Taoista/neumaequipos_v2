@@ -711,11 +711,20 @@ function obtener_packs(){
     $packs = array();
     $re = $mysqli->query("SELECT * FROM packs WHERE estado = 1") or die($mysqli->error);
     while($f = $re->fetch_object()){
-        array_push($packs, array("id" => $f->id, "descripcion" => $f->descripcion, "p_venta" => $f->p_venta, "p_oferta" => $f->p_oferta,"img" => $f->img));
+        array_push($packs, array("tipe" => 1,"id" => $f->id, "descripcion" => $f->descripcion, "p_venta" => $f->p_venta, "p_oferta" => $f->p_oferta,"img" => $f->img));
     }
+    // * se agregao ya que se necesitaba agrear productos con oferta
+
+    $re = $mysqli->query("SELECT * FROM productos WHERE estado = 1 AND oferta = 1") or die($mysqli->error);
+    while($f = $re->fetch_object()){
+        array_push($packs, array("tipe" => 2,"id" => $f->id, "descripcion" => $f->descripcion, "p_venta" => $f->p_venta, "p_oferta" => $f->v_oferta,"img" => $f->codigo));
+    }
+
     $mysqli->close();
+    
     return $packs;
 }
+
 function state_popup(){
     include("include/conx.php");
     $sts_pop = "";

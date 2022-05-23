@@ -108,6 +108,7 @@
                         <?php 
                             for ($i=0; $i < count($productos) ; $i++) { 
                                 $link = _Url.'pack/'.$productos[$i]["id"];
+                                $link2 = _Url.'producto/'.$productos[$i]["id"].'/'.generar_url($productos[$i]["descripcion"]);
                         ?>
                         <div class="col-lg-4 col-md-4 col-12">
                             <div class="single_product">
@@ -116,17 +117,21 @@
                                     <p class="manufacture_product"><a href="<?php echo $link ?>">Emprende Vulca 2</a></p>
                                 </div>
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="<?php echo $link ?>"><img src="<?php echo _Url.'assets/img/pack/'.$productos[$i]["img"].'.jpg'; ?>" alt=""></a>
+                                    <?php if($productos[$i]["tipe"] == 1){ ?>
+                                        <a class="primary_img" href="<?php echo $link ?>"><img src="<?php echo _Url.'assets/img/pack/'.$productos[$i]["img"].'.jpg'; ?>" alt=""></a>
+                                    <?php }else{ ?>
+                                        <a class="primary_img" href="<?php echo $link2 ?>"><img src="<?php echo _Url.'productos/'.$productos[$i]["img"].'.jpg'; ?>" alt=""></a>
+                                    <?php } ?>
                                     <div class="label_product">
                                         <!-- <span class="label_sale">Oferta</span> -->
                                     </div>
-                                    <div class="action_links">
+                                    <!-- <div class="action_links">
                                         <ul>
                                             <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
                                             <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                             <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="product_content grid_content">
                                     <div class="content_inner">
@@ -141,8 +146,8 @@
                                         </div>
                                         <div class="product_footer d-flex align-items-center">
                                             <div class="price_box">
-                                                <span class="current_price"><?php echo fomato_moneda($productos[$i]["p_venta"]); ?></span>
-                                                <span class="old_price">$2.580.000</span>   
+                                                <span class="current_price"><?php echo fomato_moneda($productos[$i]["p_oferta"]); ?></span>
+                                                <span class="old_price"><?php echo fomato_moneda($productos[$i]["p_venta"]); ?></span>   
                                             </div>
                                             <div class="add_to_cart">
                                                 <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
@@ -192,7 +197,7 @@
                         </div>
                         <?php } ?>
                     </div>
-                    <div class="shop_toolbar t_bottom">
+                    <!-- <div class="shop_toolbar t_bottom">
                         <div class="pagination">
                             <ul>
                                 <li class="current">1</li>
@@ -202,7 +207,7 @@
                                 <li><a href="#">>></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <!--shop toolbar end-->
                     <!--shop wrapper end-->
                 </div>

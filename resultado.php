@@ -139,6 +139,7 @@ $paginas                =   ceil(count($todos) / $hasta);
                     <?php }else{ ?>
                       <div class="row shop_wrapper">
                         <?php
+                        // ? funccion donde la esta llamando "buscar_productos()"
                             for ($i=0; $i < count($productos) ; $i++) {
                                 $link = _Url.'producto/'.$productos[$i]["id"].'/'.generar_url($productos[$i]["descripcion"]);
                         ?>
@@ -176,12 +177,12 @@ $paginas                =   ceil(count($todos) / $hasta);
                                          </div>
                                         
                                         <?php
-                                            // marca puli id => 3 y 4 
-                                            if( ($productos[$i]["id_marca"] == 3 OR $productos[$i]["id_marca"] == 4) AND $productos[$i]["stock"] !=0){
+                                            // * marca puli id => 3 y 4 
+                                            if( ($productos[$i]["id_marca"] == 3 OR $productos[$i]["id_marca"] == 4 OR $productos[$i]["of"] == True) AND $productos[$i]["stock"] !=0){
                                         ?>
                                             <div class="product_footer d-flex align-items-center">
                                              <div class="price_box">
-                                                 <span class="current_price"><?php echo fomato_moneda($productos[$i]["p_venta"]).'+ iva'; ?></span>
+                                                 <span class="current_price"><?php echo fomato_moneda($productos[$i]["p_oferta"]).'+ iva'; ?></span>
                                                  <!-- <span class="old_price">$3200.00</span> -->
                                              </div>
                                              <!-- <div class="add_to_cart">
