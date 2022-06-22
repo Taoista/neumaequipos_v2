@@ -114,8 +114,8 @@ $paginas                =   ceil(count($todos) / $hasta);
                     <div class="shop_toolbar_wrapper">
                         <div class="shop_toolbar_btn">
                             <button data-role="grid_3" type="button" class="active btn-grid-3" data-toggle="tooltip" title="3"></button>
-                            <button data-role="grid_4" type="button"  class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
-                            <button data-role="grid_list" type="button"  class="btn-list" data-toggle="tooltip" title="List"></button>
+                            <!-- <button data-role="grid_4" type="button"  class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
+                            <button data-role="grid_list" type="button"  class="btn-list" data-toggle="tooltip" title="List"></button> -->
                         </div>
                         <div class=" niceselect_option">
                             <form class="select_option" action="#">
@@ -176,23 +176,7 @@ $paginas                =   ceil(count($todos) / $hasta);
                                              </ul>
                                          </div>
                                         
-                                        <?php
-                                            // * marca puli id => 3 y 4 
-                                            if( ($productos[$i]["id_marca"] == 3 OR $productos[$i]["id_marca"] == 4 OR $productos[$i]["of"] == True) AND $productos[$i]["stock"] !=0){
-                                        ?>
-                                            <div class="product_footer d-flex align-items-center">
-                                             <div class="price_box">
-                                                 <span class="current_price"><?php echo fomato_moneda($productos[$i]["p_oferta"]).'+ iva'; ?></span>
-                                                 <!-- <span class="old_price">$3200.00</span> -->
-                                             </div>
-                                             <!-- <div class="add_to_cart">
-                                                 <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                             </div> -->
-                                         </div>
-                                        <?php
-                                            }
-                                        ?>
-
+                                       
                                          
 
                                      </div>
