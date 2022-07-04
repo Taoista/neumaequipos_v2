@@ -53,20 +53,20 @@ $condiciones        = get_condiciones($idProducto);
                             <h1><?php echo $detalle_producto["nombre"]; ?></h1>
                             <h5>codigo : <span id="codigo-producto"><?php echo $detalle_producto["codigo"] ;?></span></h5>
                             <h4>Cliente es responsable de contar con grúa para recibir carga</h4>
+                            <!-- <div class="price_box">
+                                <?php //if($detalle_producto["of"] == 1){ ?> 
+                                <span class="current_price"><?php //echo "Total ".fomato_moneda($detalle_producto["p_oferta"] + ($detalle_producto["p_oferta"] * _Iva)); ?></span><br>
+                                <?php// } ?>
+                            </div> -->
                             <div class="price_box">
-                                <?php if($detalle_producto["of"] == 1){ ?> 
-                                <span class="current_price"><?php echo "Total ".fomato_moneda($detalle_producto["p_oferta"] + ($detalle_producto["p_oferta"] * _Iva)); ?></span><br>
-                                <?php } ?>
-                            </div>
-                            <div class="price_box">
-                                <?php if( ($detalle_producto["id_marca"] == 3 OR $detalle_producto["id_marca"] == 4) AND $detalle_producto["stock"] != 0 ){ ?>
-                                    <span class="current_price"><?php echo fomato_moneda($detalle_producto["p_venta"])." + iva"; ?></span>
-                                <?php } ?>
-                                <?php if($detalle_producto["of"] == 1){ ?>
-                                <span class="old_price"><?php //echo fomato_moneda($detalle_producto["p_venta"]); ?></span>
-                                <?php }else{ ?>
-                                <span class="current_price"><?php //echo fomato_moneda($detalle_producto["p_venta"]); ?></span>
-                                <?php } ?>
+                                <?php //if( ($detalle_producto["id_marca"] == 3 OR $detalle_producto["id_marca"] == 4) AND $detalle_producto["stock"] != 0 ){ ?>
+                                    <!-- <span class="current_price"><?php //echo fomato_moneda($detalle_producto["p_venta"])." + iva"; ?></span> -->
+                                <?php //} ?>
+                                <?php //if($detalle_producto["of"] == 1){ ?>
+                                <!-- <span class="old_price"><?php //echo fomato_moneda($detalle_producto["p_venta"]); ?></span> -->
+                                <?php //}else{ ?>
+                                <!-- <span class="current_price"><?php //echo fomato_moneda($detalle_producto["p_venta"]); ?></span> -->
+                                <?php //} ?>
                             </div>
                             <div class="product_desc">
                                 <p>
