@@ -10,12 +10,19 @@ $productos              = productos_packs($idPack);
 $crumbs = explode("/",$_SERVER["REQUEST_URI"]);
 $estado_pack            = mostrar_pack();
 
-if($mostrar_pack["dato"] == "no"){
+
+
+
+
+if($estado_pack["dato"] == "no"){
         ?><script>window.location="https://neumaequipos.cl";</script> <?php
     exit();
 }
 ?>
 <body> 
+
+
+
     <?php include_once("include/social_media.php"); ?>
     <?php include_once("include/header.inc.php"); ?> 
     <!--header area end-->
