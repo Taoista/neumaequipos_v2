@@ -561,7 +561,7 @@ function buscar_productos($palabra,$tipos,$marcas,$orden,$desde,$hasta){
   ON p.id_marca = m.id
   INNER JOIN origen AS o
   ON p.id_origen = o.id
-  WHERE p.descripcion LIKE '%$palabra%' OR p.codigo LIKE '%$palabra%'  $busqueda  $busqueda2 AND p.estado = 1
+  WHERE p.estado = 1 AND p.descripcion LIKE '%$palabra%' OR p.codigo LIKE '%$palabra%'  $busqueda  $busqueda2
   $order
   LIMIT $desde, $hasta
   ") or die($mysqli->error);
