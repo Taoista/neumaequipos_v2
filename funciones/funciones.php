@@ -609,7 +609,7 @@ function imagenes_productos($id){
 function detalle_producto($id){
     include("include/conx.php");
     $datos = array();
-    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre AS tipo, m.nombre, p.id_marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img, d.detalle, p.id_tipo, p.stock
+    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, p.ficha,t.nombre AS tipo, m.nombre, p.id_marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img, d.detalle, p.id_tipo, p.stock
                         FROM productos AS p
                         INNER JOIN tipos AS t
                         ON p.id_tipo = t.id
@@ -621,7 +621,7 @@ function detalle_producto($id){
                         ON p.id = d.id_producto
                         WHERE p.id = '$id' ") or die($mysqli->error);
     while($f = $re->fetch_object()){
-       $datos = array("id" => $f->id, "codigo" => $f->codigo, "nombre" => $f->descripcion, "star" => $f->star,
+       $datos = array("id" => $f->id, "codigo" => $f->codigo, "nombre" => $f->descripcion, "star" => $f->star, "ficha" => $f->ficha,
                       "tipo" => $f->tipo, "marca" => $f->nombre, "origen" => $f->nombre, "of" => $f->oferta,
                       "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img, "detalle" => $f->detalle,
                       "relacion" => $f->id_tipo, "stock" => $f->stock, "id_marca" => $f->id_marca );

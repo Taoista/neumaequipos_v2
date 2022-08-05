@@ -90,7 +90,18 @@ $condiciones        = get_condiciones($idProducto);
                             </div>
                         <!-- </form> -->
                         <div class="product_meta">
-                            <span>Compartir</span>
+                            <!-- <span>Compartir</span> -->
+                            <ul>
+                                <li>
+                                    <!-- masterwebneuma@gmail.com -->
+                                    <?php if($detalle_producto["ficha"] == true ): ?>
+                                    <button id="btn-ficha" data-typeid="<?php echo $detalle_producto["id"] ?>" type="button" class="btn btn-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+</svg> Descargar Ficha</button>
+                                    <?php endif;?>
+                                </li>
+                            </ul>
                         </div>
                         <div class="priduct_social">
                             <ul>
@@ -230,5 +241,48 @@ $condiciones        = get_condiciones($idProducto);
    <?php include_once('include/footer.inc.php'); ?>
 <?php //include_once("include/popup.inc.php"); ?>
 <?php include_once("include/script.inc.php"); ?>
+
+
+<script>
+
+    const btn_ficha = document.getElementById('btn-ficha');
+
+    const _Url = `https://${window.location.host}/`
+    
+    btn_ficha.addEventListener('click', (e) => {
+        new Promise((resolve, reject) => {
+            const id = btn_ficha.dataset.typeid
+            const parameters = {"id_producto" : id};
+
+            $.ajax({
+                data: parameters,
+                url:  _Url+"funciones/get_path_ficha.php",
+                type: "GET",
+                beforeSend:function(){
+                    Swal.fire({
+                        html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+                        title: 'modificando..',
+                        showCloseButton: false,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        showConfirmButton:false,
+                    })
+                    $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)'); 
+                    $(".swal2-title").css("color","white"); 
+                },
+                success:function(response){
+                    resolve(response);
+                }
+            });
+        }).then(res => {
+            window.open(res, "_blank");
+            Swal.close();
+        });
+    });
+
+    
+
+</script>
+
 </body>
 </html>
