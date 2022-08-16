@@ -69,7 +69,7 @@ $phone_postventa = get_phone(2);
                         <ul>
                             <li style="font-size:15px;"><i class="fas fa-map-marker-alt"></i>  Dirección : Santa Margarita 0448, San Bernardo</li>
                             <li style="font-size:15px;"><i class="fa fa-envelope-o"></i> <a href="#"><?php echo $phone_postventa["correo"]; ?></a></li>
-                            <li style="font-size: 17px;"><i class="fa fa-phone"></i><a href="tel:56959038284">Móvil: +56 9 5903 8284 </a> </li>
+                            <li style="font-size: 17px;"><i class="fa fa-phone"></i><a href="tel:56959120748">Móvil: +56 9 5912 0748</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ $phone_postventa = get_phone(2);
             </div>
         </div>
     </div>
-    <?php include_once('include/folowus.inc.php'); ?> 
+    <?php include_once('include/folowus.inc.php'); ?>
    <?php include_once('include/footer.inc.php'); ?>
 <?php //include_once("include/popup.inc.php"); ?>
 <?php include_once("include/script.inc.php"); ?>
@@ -129,7 +129,7 @@ $phone_postventa = get_phone(2);
                 data: parametros,
                 type: "POST",
                 // dataType : 'json',
-                url:'../../funciones/enviar-email-cotizacion-unica.php', 
+                url:'../../funciones/enviar-email-cotizacion-unica.php',
                 beforeSend:function(){
                     Swal.fire({
                         html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
