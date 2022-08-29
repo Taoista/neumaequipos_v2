@@ -576,7 +576,7 @@ function buscar_productos($palabra,$tipos,$marcas,$orden,$desde,$hasta){
 function productos_realcionados($relacion, $limit){
     include("include/conx.php");
     $datos = array();
-    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, t.nombre, m.nombre AS marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img
+    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, p.id_tipo, t.nombre, m.nombre AS marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img
     FROM productos AS p
     INNER JOIN tipos AS t
     ON p.id_tipo = t.id
@@ -589,7 +589,7 @@ function productos_realcionados($relacion, $limit){
     LIMIT $limit") or die($mysqli->error);
     while($f = $re->fetch_object()){
     array_push($datos,array("id" => $f->id, "codigo" => $f->codigo, "descripcion" => $f->descripcion, "star" => $f->star,
-                "tipo" => $f->nombre, "marca" => $f->marca, "origen" => $f->nombre, "of" => $f->oferta,
+                "id_tipo" => $f->id_tipo, "tipo" => $f->nombre, "marca" => $f->marca, "origen" => $f->nombre, "of" => $f->oferta,
                 "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img ));
     }
     mysqli_close($mysqli);
@@ -609,7 +609,7 @@ function imagenes_productos($id){
 function detalle_producto($id){
     include("include/conx.php");
     $datos = array();
-    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, p.ficha,t.nombre AS tipo, m.nombre, p.id_marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img, d.detalle, p.id_tipo, p.stock
+    $re = $mysqli->query("SELECT p.id, p.codigo, p.descripcion, p.star, p.ficha, p.id_tipo, t.nombre AS tipo, m.nombre, p.id_marca, o.nombre, p.oferta, p.v_oferta, p.p_venta, p.img, d.detalle, p.id_tipo, p.stock
                         FROM productos AS p
                         INNER JOIN tipos AS t
                         ON p.id_tipo = t.id
@@ -621,7 +621,7 @@ function detalle_producto($id){
                         ON p.id = d.id_producto
                         WHERE p.id = '$id' ") or die($mysqli->error);
     while($f = $re->fetch_object()){
-       $datos = array("id" => $f->id, "codigo" => $f->codigo, "nombre" => $f->descripcion, "star" => $f->star, "ficha" => $f->ficha,
+       $datos = array("id" => $f->id, "codigo" => $f->codigo, "nombre" => $f->descripcion, "star" => $f->star, "ficha" => $f->ficha, "id_tipo" => $f->id_tipo,
                       "tipo" => $f->tipo, "marca" => $f->nombre, "origen" => $f->nombre, "of" => $f->oferta,
                       "p_oferta" => $f->v_oferta, "p_venta" => $f->p_venta, "img" => $f->img, "detalle" => $f->detalle,
                       "relacion" => $f->id_tipo, "stock" => $f->stock, "id_marca" => $f->id_marca );

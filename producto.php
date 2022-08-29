@@ -132,11 +132,18 @@ $condiciones        = get_condiciones($idProducto);
                                     <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
                                         aria-selected="false">Especificación</a>
                                 </li>
+                                <?php if($detalle_producto["id_tipo"] == 4): ?>
+                                <li>
+                                    <a data-toggle="tab" href="#manual-compresores" role="tab" aria-controls="sheet"
+                                        aria-selected="false">Manual</a>
+                                </li>
+                                <?php endif ?>
                             </ul>
                         </div>
                         <div class="tab-content">
+                            <!--  *  -->
                             <div class="tab-pane fade show active" id="info" role="tabpanel">
-                            <div class="product_d_table">
+                                <div class="product_d_table">
                                     <form action="#">
                                         <table>
                                             <tbody>
@@ -151,6 +158,7 @@ $condiciones        = get_condiciones($idProducto);
                                     </form>
                                 </div>
                             </div>
+                            <!--  * -->
                             <div class="tab-pane fade" id="sheet" role="tabpanel">
                                 <div class="product_info_content">
                                     <?php for ($i=0; $i < count($condiciones) ; $i++) { ?>
@@ -160,6 +168,7 @@ $condiciones        = get_condiciones($idProducto);
                                     <?php } ?>
                                 </div>
                             </div>
+                            <!--  * -->
                             <div class="tab-pane fade" id="reviews" role="tabpanel">
                                 <div class="reviews_wrapper">
                                     <h2>Pregunta 1</h2>
@@ -230,6 +239,17 @@ $condiciones        = get_condiciones($idProducto);
                                     </div>
                                 </div>
                             </div>
+                            <!-- * Manual =>este manual es solo para compresores -->
+                            <div class="tab-pane fade" id="manual-compresores" role="tabpanel">
+                                <div class="product_info_content">
+                                   <h1>Manual de uso y seguridad</h1>
+                                   <h3>IMPORTANTE</h3>
+                                   <p>Este manual contiene información muy importante que debe conocer y comprender. Esto se proporciona por SEGURIDAD y para EVITE PROBLEMAS EN EL EQUIPO. Para ayudar a entender esta información, observe lo siguiente:</p>
+                                   <p> <img style="width:30px" src="<?php echo _Url.'assets/img/warning-svgrepo-com.svg' ?>" alt="">  Peligro: Indica una situación peligrosa inminente que, si no se evita, provocará la muerte o lesión grave.</p>
+                                   <p> <img style="width:30px" src="<?php echo _Url.'assets/img/warning-svgrepo-com.svg' ?>" alt="">  Advertencia: Indica una situación potencialmente peligrosa que, si no se evita, podría causar la muerte o lesiones graves.</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
