@@ -319,7 +319,6 @@ $condiciones        = get_condiciones($idProducto);
                                     <p>Se puede usar un drenaje automático para varias unidades de compresor. Instale las tuberías necesarias con los accesorios apropiados.</p>
                                     <h4>CONSIDERACIÓN DE INSTALACIÓN</h4>
                                     <p>1. Enchufe el drenaje automático en un tomacorriente.</p>
-                                    <p>1. Enchufe el drenaje automático en un tomacorriente.</p>
                                     <p>2. Establezca los temporizadores en la configuración deseada.</p>
                                     Si se utiliza el drenaje para varias unidades, aumente la configuración del temporizador según sea necesario.</p>
                                     <p>3. Utilice el botón de prueba para comprobar el funcionamiento correcto.
@@ -378,7 +377,7 @@ $condiciones        = get_condiciones($idProducto);
                                         <li>•	Compruebe la válvula de seguridad</li>
                                         <li>•	Tanque de drenaje.</li>
                                     </ul>
-                                    <p><strong>Diariamente</strong></p>
+                                    <p><strong>Semanalmente</strong></p>
                                     <ul>
                                         <li>•	filtro de aire limpio</li>
                                         <li>•	Cambio de aceite (después de las primeras 8 horas)</li>
@@ -386,16 +385,16 @@ $condiciones        = get_condiciones($idProducto);
                                         <li>•	Compruebe si hay algo inusual en la operación. corregir antes que se produzca el daño.</li>
                                     </ul>
                                     <p><strong>Mensual</strong></p>
-                                        <ul>
-                                            <li>•	Revise y apriete todos los pernos como</li>
-                                            <li>•	requerido Revise todas las conexiones para fugas de aire</li>
-                                            <li>•	Verifique que las correas tengan la tensión adecuada, desgaste y alineación</li>
-                                            <li>•	Inspeccione el aceite para contaminación. Cambiar si necesario.</li>
-                                            <li>•	Verifique todas las líneas de descarga por fugas. </li>
-                                            <li>•	Fugas de aire en las líneas de descarga causarán descargadores.</li>
-                                            <li><strong>•	Cada 3 meses Cambie el aceite Inspeccione los conjuntos de válvulas</strong></li>
-                                            <li></li>
-                                        </ul>
+                                    <ul>
+                                        <li>•	Revise y apriete todos los pernos como</li>
+                                        <li>•	requerido Revise todas las conexiones para fugas de aire</li>
+                                        <li>•	Verifique que las correas tengan la tensión adecuada, desgaste y alineación</li>
+                                        <li>•	Inspeccione el aceite para contaminación. Cambiar si necesario.</li>
+                                        <li>•	Verifique todas las líneas de descarga por fugas. </li>
+                                        <li>•	Fugas de aire en las líneas de descarga causarán descargadores.</li>
+                                        <li><strong>•	Cada 3 meses Cambie el aceite Inspeccione los conjuntos de válvulas</strong></li>
+                                        <li></li>
+                                    </ul>
                                     <h3><strong>2.	PASOS PRINCIPALES DE MANTENCION PARA COMPRESOR TORNILLO EN HORAS DE TRABAJO</strong></h3>
                                     <p><strong>500 Hrs</strong></p>
                                     <ul>
