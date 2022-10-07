@@ -30,13 +30,13 @@
                                     <?php //} ?>
                                 </div>
 
-                                <div class="action_links">
+                                <!-- <div class="action_links">
                                     <ul>
                                         <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
                                         <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                         <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                          
                         </div>

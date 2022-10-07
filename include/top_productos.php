@@ -16,7 +16,7 @@ $top = top_productos(6);
                             ?>
                         <div class="single_product">
                             <div class="product_name">
-                                <h3><a href="<?php echo $link; ?>"><?php $top[$i]["nombre"] ?></a></h3>
+                                <h3><a href="<?php echo $link; ?>"><?php echo $top[$i]["nombre"] ?></a></h3>
                                 <!-- <p class="manufacture_product"><a href="#">Accessories</a></p> -->
                             </div>
                             <div class="product_thumb">
@@ -25,16 +25,16 @@ $top = top_productos(6);
                                 <?php if($top[$i]["of"] == 1){ ?>
                                 <div class="label_product"><span class="label_sale">OFERTA</span></div>
                                 <?php } ?>
-                                <div class="action_links">
+                                <!-- <div class="action_links">
                                     <ul>
                                         <li class="quick_button"><a href="<?php echo $link; ?>" data-toggle="modal" data-target="#modal_box"  title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
                                         <li class="wishlist"><a href="<?php echo $link; ?>" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                         <li class="compare"><a href=<?php echo $link; ?>" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="product_content">
-                                <div class="product_ratings">
+                                <!-- <div class="product_ratings">
                                     <ul>
                                         <li><a href="#"><i class="ion-star"></i></a></li>
                                         <li><a href="#"><i class="ion-star"></i></a></li>
@@ -42,7 +42,7 @@ $top = top_productos(6);
                                         <li><a href="#"><i class="ion-star"></i></a></li>
                                         <li><a href="#"><i class="ion-star"></i></a></li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <div class="product_footer d-flex align-items-center">
                                     <?php if($top[$i]["of"] == 1){ ?>
                                     <!-- <div class="price_box"><span class="regular_price" style="color:red"><?php //echo fomato_moneda($top[$i]["v_oferta"]); ?></span></div> -->

@@ -74,8 +74,8 @@ if($estado_pack["dato"] == "no"){
                             <h1><?php echo $datos_pack["descripcion"]; ?></h1>
                             <div class="product_nav">
                                 <ul>
-                                    <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>
-                                    <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li>
+                                    <!-- <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li> -->
                                 </ul>
                             </div>
                             <?php if($datos_pack["lbl"] == 1){ ?>
@@ -108,10 +108,10 @@ if($estado_pack["dato"] == "no"){
                                 <!-- <span>Categoria: <a href="#">Balanceadora</a></span> -->
                             </div>
                         </form>
-                        <div class="product_meta">
+                        <!-- <div class="product_meta">
                             <span>Compartir</span>
-                        </div>
-                        <div class="priduct_social">
+                        </div> -->
+                        <!-- <div class="priduct_social">
                             <ul>
                                 <li><a class="twitter" href="#" title="instagram"><i class="fa fa-instagram"></i> Instagram</a></li>  
                                 <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Like</a></li>           
@@ -120,7 +120,7 @@ if($estado_pack["dato"] == "no"){
                                 <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> share</a></li>        
                                 <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> linked</a></li>        
                             </ul>      
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

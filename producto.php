@@ -103,13 +103,12 @@ $condiciones        = get_condiciones($idProducto);
                                 </li>
                             </ul>
                         </div>
-                        <div class="priduct_social">
+                        <!-- <div class="priduct_social">
                             <ul>
                                 <li><a class="twitter" href="#" title="instagram"><i class="fa fa-instagram"></i> Instagram</a></li>
                                 <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
-                                <!-- <span>En mantenimiento, favor llamar al numero +56 9 5912 0748</span> -->
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
