@@ -146,7 +146,7 @@ $enabled = show_optiions();;
                                         <tr>
                                             <?php if($enabled == true):?>
                                             <th>Productos</th>
-                                            <th>Total</th>
+                                            <th></th>
                                             <?php endif;?>
                                         </tr>
                                     </thead>
@@ -186,15 +186,15 @@ $enabled = show_optiions();;
                                         ?>
                                     <tr>
                                         <td> <?php echo $prod_items[$i]["descripcion"]; ?> <strong><?php echo "× ".$prod_items[$i]["cantidad"]; ?></strong></td>
-                                        <td> 
-                                            <?php 
-                                                if($prod_items[$i]["p_venta"] == 0){
-                                                    echo "Cotizacicón";
-                                                }else{
-                                                    echo fomato_moneda($sub_total_2); 
-                                                }
-                                            ?>
-                                        </td>
+                                        <!-- <td>  -->
+                                            <!-- <?php 
+                                                // if($prod_items[$i]["p_venta"] == 0){
+                                                //     echo "Cotizacicón";
+                                                // }else{
+                                                //     echo fomato_moneda($sub_total_2); 
+                                                // }
+                                            ?> -->
+                                        <!-- </td> -->
                                     </tr>
                                   <?php } ?>
                               <?php } ?>
