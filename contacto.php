@@ -49,7 +49,7 @@
                         <ul>
                             <li style="font-size: 17px;"><i class="fas fa-map-marker-alt"></i>  Dirección : Santa Margarita 0448, San Bernardo</li>
                             <li style="font-size: 17px;"><i class="fa fa-envelope-o"></i> <a href="#"><?php echo $phone_postventa["correo"]; ?></a></li>
-                            <li style="font-size: 17px;"><i class="fa fa-phone"></i><a href="tel:0(1234)567890">+56 9 50114105 </a> </li>
+                            <li style="font-size: 17px;"><i class="fa fa-phone"></i><a href="tel:0(1234)567890">+569 5912 1273 </a> </li>
                         </ul>             
                     </div> 
                 </div>
