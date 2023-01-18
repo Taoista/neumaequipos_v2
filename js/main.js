@@ -482,7 +482,7 @@ function buy_pack(tipo, id_pack){
   // alert(id_pack);
   console.log("enviar cotiszacion");
 }
-
+// * llama al una arhicvo php para comprar
 function tbk_demo(e,tipo, id_pack){
   e.preventDefault();
   // alert(id_pack);

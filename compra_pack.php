@@ -1,4 +1,5 @@
 <?php
+// * donde se puede comprar el pack
 session_start();
 include_once("include/head.inc.php");
 include_once("funciones/funciones.php");
