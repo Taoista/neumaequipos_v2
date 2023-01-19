@@ -512,30 +512,29 @@ function pagar_transbank_pack(){
       let parametros = {"nombre" : nombre, "telefono" : telefono, "email" : email, "region" : region, "msg" : msg, "ciudad": ciudad, "direccion" : direccion,  "id": idPorducto };
       // window.location.href = "../../../funciones/pgo_pack_transbank.php.php?nombre="+nombre+"&telefono="+telefono+"&email="+email+"&region="+region+"&msg="+msg+"&ciudad="+ciudad+"&direccion="+direccion+"&idPorducto="+idPorducto;
       //https://neumaequipos.cl/funciones/pgo_pack_transbank.php?nombre=nombr&telefono=09099090&email=demo@demo.cl&region=region&msg=paiaqajak&ciudad=ciduad&direccion=demodemeo&idPorducto=4
-    
-      $.ajax({
-        data: parametros,
-        type: "POST",
-        crossDomain: true,
-        // dataType : 'json',
-        url:'https://nt2.neumatruck.cl/api/iniciar_compra', 
-        beforeSend:function(){
-            Swal.fire({
-                html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
-                title: 'Enviando',
-                showCloseButton: false,
-                showCancelButton: false,
-                focusConfirm: false,
-                showConfirmButton:false,
-            })
-            $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)');//Optional changes the color of the sweetalert
-            $(".swal2-title").css("color","white");
-        },
-        success:function(response){ 
-          window.location.href = response;
-        }
-      });
-    
+      // * pago con transbank
+      // $.ajax({
+      //   data: parametros,
+      //   type: "POST",
+      //   crossDomain: true,
+      //   url:'https://nt2.neumatruck.cl/api/iniciar_compra', 
+      //   beforeSend:function(){
+      //       Swal.fire({
+      //           html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+      //           title: 'Enviando',
+      //           showCloseButton: false,
+      //           showCancelButton: false,
+      //           focusConfirm: false,
+      //           showConfirmButton:false,
+      //       })
+      //       $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)');//Optional changes the color of the sweetalert
+      //       $(".swal2-title").css("color","white");
+      //   },
+      //   success:function(response){ 
+      //     window.location.href = response;
+      //   }
+      // });
+      alert("testing");
     
     }
 
