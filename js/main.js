@@ -1,5 +1,8 @@
-// const _URL = 'http://localhost/neumaequipos_v2/';
-const _URL = 'https://neumaequipos.cl/';
+
+
+const _URL = `https://${location.host}/`;
+
+
 
 function llamar_cotizacion(id){
   console.log("eejcuntadno");
@@ -489,7 +492,10 @@ function tbk_demo(e,tipo, id_pack){
   window.location.href = "../compra_pack/"+id_pack;
 }
 
+
+
 function pagar_transbank_pack(){
+  // ? este es el id del pack
   let idPorducto = document.getElementById("id-unico").value;
   // let codigo = document.getElementById("codigo-unica").innerHTML;
   // let titulo = document.getElementById("nombre-producto").innerHTML;
@@ -504,38 +510,54 @@ function pagar_transbank_pack(){
   let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   
   
+  let cantidad = 0;
+
   if(nombre == "" || telefono == "" || email == "" || region == "" || direccion == "" || ciudad == ""){
       Swal.fire('Error','debe llenar los campos','error');
   }else if (!emailRegex.test(email)) {
       Swal.fire('Error email','Debe selecionar email valido','error');
   }else{
-      let parametros = {"nombre" : nombre, "telefono" : telefono, "email" : email, "region" : region, "msg" : msg, "ciudad": ciudad, "direccion" : direccion,  "id": idPorducto };
-      // window.location.href = "../../../funciones/pgo_pack_transbank.php.php?nombre="+nombre+"&telefono="+telefono+"&email="+email+"&region="+region+"&msg="+msg+"&ciudad="+ciudad+"&direccion="+direccion+"&idPorducto="+idPorducto;
-      //https://neumaequipos.cl/funciones/pgo_pack_transbank.php?nombre=nombr&telefono=09099090&email=demo@demo.cl&region=region&msg=paiaqajak&ciudad=ciduad&direccion=demodemeo&idPorducto=4
-    
-      $.ajax({
-        data: parametros,
-        type: "POST",
-        crossDomain: true,
-        // dataType : 'json',
-        url:'https://nt2.neumatruck.cl/api/iniciar_compra', 
-        beforeSend:function(){
-            Swal.fire({
-                html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
-                title: 'Enviando',
-                showCloseButton: false,
-                showCancelButton: false,
-                focusConfirm: false,
-                showConfirmButton:false,
-            })
-            $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)');//Optional changes the color of the sweetalert
-            $(".swal2-title").css("color","white");
-        },
-        success:function(response){ 
-          window.location.href = response;
-        }
-      });
-    
+      let parametros = {"nombre" : nombre, "telefono" : telefono, "email" : email, "region" : region, 
+                      "msg" : msg, "ciudad": ciudad, "direccion" : direccion,  "id": idPorducto, 
+                      "cantidad" : cantidad };
+      // * pago con transbank
+
+      new Promise((resolve, reject) => {
+
+        // const parametros = {
+        //   'nombre' : nombre,
+        //   'phone' : telefono,
+        //   'email' : email,
+        //   'region' : region,
+        //   'ciudad' : ciudad,
+        //   'direccion' : direccion,
+        //   'msg' : msg
+        // }
+
+          $.ajax({
+          data: parametros,
+          type: "POST",
+          crossDomain: true,
+          url: `${_URL}funciones/pgo_pack_transbank.php`, 
+          beforeSend:function(){
+              Swal.fire({
+                  html:'<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+                  title: 'Enviando',
+                  showCloseButton: false,
+                  showCancelButton: false,
+                  focusConfirm: false,
+                  showConfirmButton:false,
+              })
+              $(".swal2-modal").css('background-color', 'rgba(0, 0, 0, 0.0)');//Optional changes the color of the sweetalert
+              $(".swal2-title").css("color","white");
+          },
+          success:function(response){ 
+              resolve(response)
+          }
+        });
+      }).then(res => {
+        window.location.href = res;
+      })
     
     }
 
