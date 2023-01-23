@@ -1,9 +1,7 @@
 <?php
-const _Iva = 0.19;
-// const _Url = 'http://localhost/neumaequipos_v2/';
-// const _Url = "https://neumaequipos.cl/";
-// const _Url = $_SERVER['HTTP_HOST'];
 define('_Url', 'https://'.$_SERVER['HTTP_HOST'].'/');
+define('_Iva', '0.19');
+
 echo _Url;
 function productos_pack($id){
   include("./include/conx_pdo.php");

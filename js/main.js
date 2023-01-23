@@ -492,6 +492,8 @@ function tbk_demo(e,tipo, id_pack){
   window.location.href = "../compra_pack/"+id_pack;
 }
 
+
+
 function pagar_transbank_pack(){
   // ? este es el id del pack
   let idPorducto = document.getElementById("id-unico").value;
@@ -554,7 +556,7 @@ function pagar_transbank_pack(){
           }
         });
       }).then(res => {
-        alert(res);
+        window.location.href = res;
       })
     
     }
