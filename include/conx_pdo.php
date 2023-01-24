@@ -10,7 +10,6 @@ if($_SERVER['HTTP_HOST'] == "localhost:8080"){
     $mysql_hostname = "localhost";
     $mysql_user = "neum68927_taoista";
     $mysql_password = "7340458Tao";
-
 }
 
 $base = new PDO('mysql:host='.$mysql_hostname.'; dbname='.$mysql_database, $mysql_user, $mysql_password);

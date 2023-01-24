@@ -92,23 +92,23 @@ if($token != null){
 
     $cliente_asunto     = "neumaequipos.cl Compra Nº ".$buyOrder;
     ob_start();
-    include_once("./funciones/email-tbk/demo.php");
+    include_once("./funciones/email-tbk/email.php");
 
-    // $nombre = $data_token["nombre"].' '.$data_token["apellido"];
-    // $email = $data_token["email"];
-    // $telefono = $data_token["telefono"];
-    // $fecha = $data_token["fecha"];
-    // $hora = '';
-    // $pack = $title = $productos[0]["tipo"] == '0' ? '' :$productos[0]["tipo"];
-    // $forma_pago = $data_token["tarjeta"];
-    // $codig_pago = $data_token['n_tarjeta'];
-    // $cant_ctas = $data_token["cuotas"];
-    // $val_ctas = $data_token["val_cuotas"];
-    // $productos = $productos;
-    // $region = $data_token["region"];
-    // $ciudad = $data_token["ciudad"];
-    // $direccion = $data_token["direccion"];
-    // $total = $data_token["total"];
+    $nombre = $data_token["nombre"].' '.$data_token["apellido"];
+    $email = $data_token["email"];
+    $telefono = $data_token["telefono"];
+    $fecha = $data_token["fecha"];
+    $hora = '';
+    $pack = $title = $productos[0]["tipo"] == '0' ? '' :$productos[0]["tipo"];
+    $forma_pago = $data_token["tarjeta"];
+    $codig_pago = $data_token['n_tarjeta'];
+    $cant_ctas = $data_token["cuotas"];
+    $val_ctas = $data_token["val_cuotas"];
+    $productos = $productos;
+    $region = $data_token["region"];
+    $ciudad = $data_token["ciudad"];
+    $direccion = $data_token["direccion"];
+    $total = $data_token["total"];
 
     $correo_php             = ob_get_contents();
     ob_end_clean();
