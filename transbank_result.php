@@ -1,8 +1,8 @@
 <?php
-    include_once("funciones/funciones.php");
+    include_once("./funciones/funciones.php");
     $state_popup    = state_popup();
     $destacados     = productos_destacados();
-    include_once("include/head.inc.php");
+    include_once("./include/head.inc.php");
 
     $phone_postventa = get_phone(3);
 
@@ -11,7 +11,7 @@
  
     // * ruta demo
     // http://localhost:8080/transbank_result.php?token=01aba9a330a561d26183bfbe010bcbf87ac2264e680cd813255ba319e34d9655
-
+    // * 01ab7778bf7176c51e693758e0cc27600f5d2cbeb379fd531848a9c473c7027b
 ?>
 <body>
     <?php include_once("include/social_media.php"); ?>

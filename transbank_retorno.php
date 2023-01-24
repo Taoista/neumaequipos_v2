@@ -43,7 +43,7 @@ if(estado_tbk() == true){
 
 
 $token = !isset($_POST['token_ws']) ? $_GET['token_ws'] :  null;
-
+$buyOrder = 0;
 // ? aceptada
 if($token != null){
     include("./include/conx.php");
@@ -90,25 +90,25 @@ if($token != null){
     // * toma los datos cotizados o el pack comprado
     $productos = get_productos_payment($data_token["id_order"]);
 
-
+    $cliente_asunto     = "neumaequipos.cl Compra Nº ".$buyOrder;
     ob_start();
-    include_once("./funciones/email-tbk/email.php");
+    include_once("./funciones/email-tbk/demo.php");
 
-    $nombre = $data_token["nombre"].' '.$data_token["apellido"];
-    $email = $data_token["email"];
-    $telefono = $data_token["telefono"];
-    $fecha = $data_token["fecha"];
-    $hora = '';
-    $pack = $title = $productos[0]["tipo"] == '0' ? '' :$productos[0]["tipo"];
-    $forma_pago = $data_token["tarjeta"];
-    $codig_pago = $data_token['n_tarjeta'];
-    $cant_ctas = $data_token["cuotas"];
-    $val_ctas = $data_token["val_cuotas"];
-    $productos = $productos;
-    $region = $data_token["region"];
-    $ciudad = $data_token["ciudad"];
-    $direccion = $data_token["direccion"];
-    $total = $data_token["total"];
+    // $nombre = $data_token["nombre"].' '.$data_token["apellido"];
+    // $email = $data_token["email"];
+    // $telefono = $data_token["telefono"];
+    // $fecha = $data_token["fecha"];
+    // $hora = '';
+    // $pack = $title = $productos[0]["tipo"] == '0' ? '' :$productos[0]["tipo"];
+    // $forma_pago = $data_token["tarjeta"];
+    // $codig_pago = $data_token['n_tarjeta'];
+    // $cant_ctas = $data_token["cuotas"];
+    // $val_ctas = $data_token["val_cuotas"];
+    // $productos = $productos;
+    // $region = $data_token["region"];
+    // $ciudad = $data_token["ciudad"];
+    // $direccion = $data_token["direccion"];
+    // $total = $data_token["total"];
 
     $correo_php             = ob_get_contents();
     ob_end_clean();
@@ -120,10 +120,10 @@ if($token != null){
 
     // * verifica si el estado esta como debug
     if(estado_test() == false){
-      mail($contacto_admin,$cliente_asunto,$correo_php,$desde);
-      mail($email,$cliente_asunto,$correo_php,$desde);
-      mail("mhernandez@neumachile.cl",$cliente_asunto,$correo_php,$desde);
-      mail("aolave@neumachile.cl",$cliente_asunto,$correo_php,$desde);
+      // mail($contacto_admin,$cliente_asunto,$correo_php,$desde);
+      // mail($email,$cliente_asunto,$correo_php,$desde);
+      mail("luis.olave.carvajal@gmail.com",$cliente_asunto,$correo_php,$desde);
+
     }else{
       mail("luis.olave.carvajal@gmail.com",$cliente_asunto,$correo_php,$desde);
     }

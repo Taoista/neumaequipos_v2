@@ -1,5 +1,5 @@
 <?php
-define('_Url', 'https://'.$_SERVER['HTTP_HOST'].'/');
+define('_Url', 'http://'.$_SERVER['HTTP_HOST'].'/');
 define('_Iva', '0.19');
 
 function estado_test(){
@@ -29,14 +29,15 @@ function get_data_token($token){
   $data = array();
 
   $sql = "SELECT t.id_order, t.status, t.fecha, t.authorizationCode AS cod_aut, tt.name AS tarjeta,
-                t.cardNumber AS n_tarjeta, t.installmentsNumber AS cuotas, t.installmentsAmount AS val_cuota,
-                t.total, c.nombre, c.empresa, c.apellido, c.email, c.region, c.ciudad, c.direccion, c.nota, c.email_diferido
+          t.cardNumber AS n_tarjeta, t.installmentsNumber AS cuotas, t.installmentsAmount AS val_cuota,
+          t.total, c.nombre, c.empresa, c.apellido, c.email, c.region, c.ciudad, c.direccion, c.nota, c.id_email_diferido
           FROM transbank AS t
           JOIN tipo_tarjeta AS tt
           ON tt.cod = t.paymentTypeCode
           JOIN cotizaciones AS c
           ON c.id = t.id_order
           WHERE t.token = '$token'";
+
 
   $result = $base->prepare($sql);
   $result->execute();
@@ -47,7 +48,9 @@ function get_data_token($token){
                   "n_tarjeta" => $f->n_tarjeta, "cuotas" => $f->cuotas, "val_cuota" => $f->val_cuota,
                   "total" => $f->total, "nombre" => $f->nombre, "apellido" => $f->apellido, 
                   "empresa" => $f->empresa, "email" => $f->email, "region" => $f->region, "ciudad" => $f->ciudad, 
-                  "direccion" => $f->direccion, "nota" => $f->nota, "email_diferido" => $f->email_diferido);
+                  "direccion" => $f->direccion, "nota" => $f->nota, "email_diferido" => $f->id_email_diferido);
+
+
   }
 
   $base = null;
