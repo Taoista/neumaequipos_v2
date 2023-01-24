@@ -1,5 +1,5 @@
 <?php
-define('_Url', 'http://'.$_SERVER['HTTP_HOST'].'/');
+define('_Url', 'https://'.$_SERVER['HTTP_HOST'].'/');
 define('_Iva', '0.19');
 
 function estado_test(){
