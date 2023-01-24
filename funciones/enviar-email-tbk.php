@@ -1,5 +1,5 @@
 <?php
-
+// ! creo que esto esta deprecado ()1/24
 function email_algorit_desicion2(){
     $mysql_database = "neum68927_neumaequipos";
         $mysql_hostname = "localhost";

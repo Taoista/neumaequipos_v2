@@ -119,7 +119,7 @@ $phone_postventa = get_phone(2);
                                 <label>  Mensaje</label>
                                 <textarea id="msg" placeholder="Mensaje *" name="Escribe aquí "  class="form-control2" ></textarea>
                             </div>
-                            <button onclick="return pagar_transbank_pack()"> Pagar</button>
+                            <button onclick="pagar_transbank_pack(event)"> Pagar</button>
                             <p class="form-messege"></p>
                     </div>
                 </div>

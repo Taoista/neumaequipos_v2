@@ -1,7 +1,4 @@
-
-
-const _URL = `https://${location.host}/`;
-
+const _URL = `http://${location.host}/`;
 
 
 function llamar_cotizacion(id){
@@ -493,8 +490,9 @@ function tbk_demo(e,tipo, id_pack){
 }
 
 
-
-function pagar_transbank_pack(){
+// * comppra los packs
+function pagar_transbank_pack(e){
+  e.preventDefault()
   // ? este es el id del pack
   let idPorducto = document.getElementById("id-unico").value;
   // let codigo = document.getElementById("codigo-unica").innerHTML;
@@ -522,18 +520,8 @@ function pagar_transbank_pack(){
                       "cantidad" : cantidad };
       // * pago con transbank
 
+
       new Promise((resolve, reject) => {
-
-        // const parametros = {
-        //   'nombre' : nombre,
-        //   'phone' : telefono,
-        //   'email' : email,
-        //   'region' : region,
-        //   'ciudad' : ciudad,
-        //   'direccion' : direccion,
-        //   'msg' : msg
-        // }
-
           $.ajax({
           data: parametros,
           type: "POST",

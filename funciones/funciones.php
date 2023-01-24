@@ -1,8 +1,98 @@
 <?php
-define('_Url', 'https://'.$_SERVER['HTTP_HOST'].'/');
+define('_Url', 'http://'.$_SERVER['HTTP_HOST'].'/');
 define('_Iva', '0.19');
 
-echo _Url;
+function estado_test(){
+  include("./include/conx_pdo.php");
+
+  $state = false;
+
+  $sql = "SELECT dato FROM configuracion WHERE tipo = 'debug' ";
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+    $state = $f->dato == "no" ? false : true;
+  }
+
+  $base = null;
+  $result->closeCursor();
+
+  return $state;
+
+}
+
+function get_data_token($token){
+  include("./include/conx_pdo.php");
+
+  $data = array();
+
+  $sql = "SELECT t.id_order, t.status, t.fecha, t.authorizationCode AS cod_aut, tt.name AS tarjeta,
+                t.cardNumber AS n_tarjeta, t.installmentsNumber AS cuotas, t.installmentsAmount AS val_cuota,
+                t.total, c.nombre, c.empresa, c.apellido, c.email, c.region, c.ciudad, c.direccion, c.nota, c.email_diferido
+          FROM transbank AS t
+          JOIN tipo_tarjeta AS tt
+          ON tt.cod = t.paymentTypeCode
+          JOIN cotizaciones AS c
+          ON c.id = t.id_order
+          WHERE t.token = '$token'";
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+    $data = array("id_order" => $f->id_order, "cod_aut" => $f->cod_aut,
+                  "estado" => $f->status, "fecha" => $f->fecha, "tarjeta" => $f->tarjeta,
+                  "n_tarjeta" => $f->n_tarjeta, "cuotas" => $f->cuotas, "val_cuota" => $f->val_cuota,
+                  "total" => $f->total, "nombre" => $f->nombre, "apellido" => $f->apellido, 
+                  "empresa" => $f->empresa, "email" => $f->email, "region" => $f->region, "ciudad" => $f->ciudad, 
+                  "direccion" => $f->direccion, "nota" => $f->nota, "email_diferido" => $f->email_diferido);
+  }
+
+  $base = null;
+  $result->closeCursor();
+
+  return $data;
+}
+
+// * toma los prodcutos comprasdos
+function get_productos_payment($id_order){
+  include("./include/conx_pdo.php");
+
+  $productos = array();
+
+  $sql = "SELECT p.codigo, p.descripcion, p.p_venta, pc.cantidad, 
+                pc.pack AS tipo, pc.cantidad
+          FROM productos_cotizaciones AS pc
+          JOIN productos AS p
+          ON p.id = pc.id_producto
+          WHERE pc.id_cotizacion = '$id_order'"; 
+
+  $result = $base->prepare($sql);
+  $result->execute();
+
+  while($f = $result->fetch(PDO::FETCH_OBJ)){
+    array_push($productos, array(
+      "codigo" => $f->codigo,
+      "descripcion" => $f->descripcion,
+      "p_venta" => $f->p_venta,
+      "cantidad" => $f->cantidad,
+      "tipo" => $f->tipo,
+      "cantidad" => $f->cantidad
+    ));
+  }
+
+  $base = null;
+  $result->closeCursor();
+
+
+
+  return $productos;
+
+}
+
+
 function productos_pack($id){
   include("./include/conx_pdo.php");
 

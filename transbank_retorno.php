@@ -1,8 +1,9 @@
 <?php
 
-define('_Url', 'https://'.$_SERVER['HTTP_HOST'].'/');
+include_once("funciones/funciones.php");
 
-// * estado del tbk
+
+// * estado del tbk pago o test
 function estado_tbk(){
     include("./include/conx.php");
     $data = false;
@@ -13,6 +14,20 @@ function estado_tbk(){
       }
     $mysqli->close();
     return $data == "no" ? false : true;
+}
+
+// * toma lso datos del tbk
+function response_tbk($token){
+  include("./include/conx.php");
+  $data = false;
+
+  $re = $mysqli->query("SELECT `status`, status_code FROM transbank WHERE token = '$token'") or die(mysql_error());
+    while($f = $re->fetch_object()){
+      $data =  $f->status;
+  }
+
+  $mysqli->close();
+  return $data;
 }
 
 require_once './vendor/autoload.php';
@@ -26,12 +41,8 @@ if(estado_tbk() == true){
   $transaction->configureForIntegration('597055555532', '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C');
 }
 
-echo "hola";
 
 $token = !isset($_POST['token_ws']) ? $_GET['token_ws'] :  null;
-
-echo $token.'<br>';
-
 
 // ? aceptada
 if($token != null){
@@ -46,17 +57,18 @@ if($token != null){
     $auCode             = $response->authorizationCode;
     $paymentTypeCode    = $response->paymentTypeCode;
     $accountingDate     = $response->accountingDate;
-    $iNuber             = $response->installmentsNumber;
-    $uAmount            = $response->installmentsAmount;
+    $iNuber             = $response->installmentsNumber == "" ? 0 : $response->installmentsNumber;
+    $uAmount            = $response->installmentsAmount == '' ? 0 : $response->installmentsAmount;
     $sessionId          = $response->sessionId;
     $buyOrder           = $response->buyOrder;
     $cardNumber         = $response->cardNumber;
     $transDate          = $response->transactionDate;
-    echo "enchtro"."<br>";
+
     $mysqli->query("UPDATE transbank SET `status` = '$status', status_code = '$respCode', authorizationCode = '$auCode',
                     paymentTypeCode = '$paymentTypeCode', accountingDate = '$accountingDate', installmentsNumber = '$iNuber',
-                    cardNumber = '$cardNumber', installmentsAmount = '$installmentsAmount' WHERE id_order = '$buyOrder' ");
-    echo "termino insert"."<br>";
+                    cardNumber = '$cardNumber', installmentsAmount = '$uAmount' WHERE id_order = '$buyOrder'");
+
+
     $mysqli->close();
 }else{
 // ? rechzada
@@ -66,44 +78,62 @@ if($token != null){
 }
 
 
-// function get_data_compra_tbk($id){
-//     include("./include/conx_pdo.php");
-    
-//     $data = array();
-  
-//     $sql = "SELECT t.status ,t.fecha, t.card_detail, t.payment_type_code, t.installments_amount, 
-//                   t.installments_number, t.total, p.img, p.descripcion, c.enviado, ptc.nombre AS tipo_pago,
-//                   c.nombre AS c_nombre, c.telefono AS telefono, c.email, c.region, c.ciudad, c.direccion
-//             FROM transbank AS t 
-//             INNER JOIN compras AS c
-//             ON t.id_compra = c.id
-//             INNER JOIN packs AS p
-//             ON c.id_pack = p.id
-//             INNER JOIN payment_type_code AS ptc
-//             ON t.payment_type_code = ptc.tipe
-//             WHERE t.id = '$id'";
-  
-//     $result = $base->prepare($sql);
-//     $result->execute();
-  
-//     while($f = $result->fetch(PDO::FETCH_OBJ)){
-//       $data = array("status" => $f->status, "fecha" => $f->fecha, "card_detail" => $f->card_detail, "payment_type_code" => $f->payment_type_code, 
-//                   "installments_amount" => $f->installments_amount, "installments_number" => $f->installments_number, "total" => $f->total, 
-//                   "img" => $f->img, "descripcion" => $f->descripcion, "enviado" => $f->enviado, "tipo_pago" => $f->tipo_pago,
-//                   "c_nombre" => $f->c_nombre, "telefono" => $f->telefono, "email" => $f->email, "region" => $f->region, "ciudad" => $f->ciudad, 
-//                   "direccion" =>$f->direccion);
-//     }
-  
-//     $base = null;
-//     $result->closeCursor();
-  
-//     return $data;
-//   }
-
-
   $token = !isset($_POST['token_ws']) ? $_GET['token_ws'] :  null;
+  // * resultado redirecciona
+  $response = response_tbk($token);
+
+  if($response == "AUTHORIZED"){
+    // * como paso a ser autorizado debe enviar
+
+    // * toma los datos de la cotizacion
+    $data_token = get_data_token($token);
+    // * toma los datos cotizados o el pack comprado
+    $productos = get_productos_payment($data_token["id_order"]);
 
 
-echo "terminado";
+    ob_start();
+    include_once("./funciones/email-tbk/email.php");
+
+    $nombre = $data_token["nombre"].' '.$data_token["apellido"];
+    $email = $data_token["email"];
+    $telefono = $data_token["telefono"];
+    $fecha = $data_token["fecha"];
+    $hora = '';
+    $pack = $title = $productos[0]["tipo"] == '0' ? '' :$productos[0]["tipo"];
+    $forma_pago = $data_token["tarjeta"];
+    $codig_pago = $data_token['n_tarjeta'];
+    $cant_ctas = $data_token["cuotas"];
+    $val_ctas = $data_token["val_cuotas"];
+    $productos = $productos;
+    $region = $data_token["region"];
+    $ciudad = $data_token["ciudad"];
+    $direccion = $data_token["direccion"];
+    $total = $data_token["total"];
+
+    $correo_php             = ob_get_contents();
+    ob_end_clean();
+
+    $desde                 = 'MIME-Version: 1.0' . "\r\n";
+    $desde                 .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
+    $desde                 .= "From:"."	neumaequipos.cl <no-reply@neumaequipos.cl>";
+    // // mail cliente
+
+    // * verifica si el estado esta como debug
+    if(estado_test() == false){
+      mail($contacto_admin,$cliente_asunto,$correo_php,$desde);
+      mail($email,$cliente_asunto,$correo_php,$desde);
+      mail("mhernandez@neumachile.cl",$cliente_asunto,$correo_php,$desde);
+      mail("aolave@neumachile.cl",$cliente_asunto,$correo_php,$desde);
+    }else{
+      mail("luis.olave.carvajal@gmail.com",$cliente_asunto,$correo_php,$desde);
+    }
+
+
+
+
+    header('Location: '._Url.'transbank_result.php?token='.$token);
+  }else{
+    header('Location: '._Url.'transbank_result_fail.php/');
+  }
 
 ?>

@@ -2,9 +2,9 @@
 echo $_SERVER['HTTP_HOST'];
 
 
-$mysql_hostname = "db:3306";
-$mysql_user = "user";
-$mysql_password = "password";
+$mysql_hostname = "database";
+$mysql_user = "root";
+$mysql_password = "";
 $mysql_database = "database";
 // $link = mysqli_connect("localhost", "root", "");
 // mysql_select_db("rotem",$link) OR DIE ("Error: No es posible establecer la conexión");

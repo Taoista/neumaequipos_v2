@@ -1,7 +1,7 @@
 RewriteBase /
 
 RewriteCond %{SERVER_PORT} 80
-# RewriteRule ^(.*)$ http://localhost:8080/neumaequipos/$1 [R,L]
+# RewriteRule ^(.*)$ http://localhost:4500/$1 [R,L]
 
 Options +FollowSymLinks
 RewriteEngine On
@@ -29,6 +29,13 @@ RewriteRule ^carrito/                                carrito.php
 RewriteRule ^checkout/                               checkout.php 
 RewriteRule ^cotizacion/(.*)/(.*)                    cotizacion.php?idProducto=$1&cantidad=$2 
 RewriteRule ^checkout_pack/(.*)                      ceckout_pack.php?idProducto=$1
+
+RewriteRule ^transbank_result_fail/                   transbank_result_fail.php
+RewriteRule ^transbank_result/                        transbank_result.php
+
+
+
+
 
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php56” package as the default “PHP” programming language.

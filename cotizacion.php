@@ -156,7 +156,7 @@ $phone_postventa = get_phone(2);
         return false;
     }
     function redireccionar_inicio(){
-        window.location = "https://neumaequipos.cl/";
+        window.location = _URL;
     }
 </script>
 </body>
