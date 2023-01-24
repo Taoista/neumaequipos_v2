@@ -1,4 +1,4 @@
-const _URL = `http://${location.host}/`;
+const _URL = `https://${location.host}/`;
 
 
 function llamar_cotizacion(id){
